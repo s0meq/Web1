@@ -7,21 +7,20 @@
         <title>Portfolio v2</title>
     </head>
     <body>
-        <div id="wholepage">
-            <h1>Portfolio</h1>
-            <nav>
-                Etusivu |
-                Projektit |
-                Yhteystiedot
-            </nav>
-            <img src="Muotokuva.jpg" alt="Omakuva" 
-            width="160" height="160">
+        <section id="page-top">
+            <div class="container_buttons" id="container_buttons-nav">
+                <a href="#page-top">Etusivu</a>
+                <a href="#page-projects">Projektit</a>
+                <a href="#page-contact_info">Yhteystiedot</a>            
+            </div>
+        </section>
+        <section>
+            <img src="catto.webp" alt="Omakuva" id="avatar" width="200" height="200">
             <p>
                 <b>Hei! Olen Rasmus Oksanen,<br>web-kehittäjä-opiskelija.</b>
                 <br>
                 Rakennan portfoliota ja opin jatkuvasti uutta.
             </p>
-            <hr>
             <hr>
             <h3>Ominaisuudet:</h3>
             <table>
@@ -42,7 +41,9 @@
                     </td>
                 </tr>
             </table>
+        </section>
             <hr>
+        <section id="page-projects">
             <h3>Projektit:</h3>
             <ol>
                 <li>Portfolio-sivu 1</li>
@@ -50,10 +51,45 @@
                 <li>Multimedia-demo</li>
                 <li>CSS-layout</li>
             </ol>
-            <footer>
-                <p>Koodi on runoutta koneille. (AI?)</p>
-                <p>&copy;2025 Rasmus Oksanen</p>
-            </footer>
-        </div>
+        </section>
+        <p>Koodi on <i>runoutta</i> koneille.</p>
+        <p>&copy;2025 Rasmus Oksanen</p>
+        <section id="page-contact_info">
+            <h1>Ota yhteyttä</h1>
+            <form action="#" id="get-in-touch">
+                <label for="fname">Nimi:</label>
+                <input type="text" id="fname" name="fname" class="input_info">
+
+                <label for="email">Sähköposti:</label>
+                <input type="email" id="email" name="email" class="input_info">
+
+                <label for="phone_num">Puhelinnumero (muoto: 040-1234567):</label>
+                <input type="tel" id="phone_num" 
+                name="phone_num" class="input_info" pattern="[0-9]{3}-[0-9]{7}" placeholder="040-1234567">
+
+                <label for="portfolio_or_website">Portfolio / verkkosivu:</label>
+                <input type="text" id="portfolio_or_website" 
+                name="portfolio_or_website" class="input_info" placeholder="https://example.com">
+
+                <label for="add_file_cv">Liitä CV / portfolio (PDF):</label>
+                <input type="file" id="add_file_cv" name="add_file_cv" class="input_info">
+
+                <label for="meeting_date">Toivottu tapaamispäivä:</label>
+                <input type="date" id="meeting_date" name="meeting_date" class="input_info">
+
+                <label for="meeting_time">Toivottu kellonaika:</label>
+                <input type="time" id="meeting_time" name="meeting_time" class="input_info">
+
+                <label for="work_exp">Työkokemus vuosina:</label>
+                <input type="number" id="work_exp" name="work_exp" class="input_info">
+
+                <label for="html_skill">HTML taidot (1 - 10):</label>
+                <input type="range" id="html_skill" name="html_skill" class="input_info" min="1" max="10">
+
+                <label for="comment">Viesti:</label>
+                <textarea form="get-in-touch" id="comment" 
+                name="comment" class="input_info" maxlength="500" cols="30" rows="4"></textarea>
+            </form>
+        </section>
     </body>
 </html>

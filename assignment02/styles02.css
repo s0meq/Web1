@@ -1,6 +1,9 @@
-#wholepage {
-    text-align: center;
+/* To set elements to block display */
+#avatar, .input_info {
+    display: block;
 }
-h1 {
-    color: Red;
+
+/* Picture */
+#avatar {
+    border-radius: 55%;
 }
