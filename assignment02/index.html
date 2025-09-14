@@ -8,22 +8,30 @@
     </head>
     <body>
         <section id="page-top">
-            <div class="container_buttons" id="container_buttons-nav">
-                <a href="#page-top">Etusivu</a>
-                <a href="#page-projects">Projektit</a>
-                <a href="#page-contact_info">Yhteystiedot</a>            
+            <div class="flex_btns-container" id="buttons_nav-container">
+                <div class="flex-nav-btn" id="front_page_btn-container">
+                    <a href="#page-top" class="nav-btn" id="front_page-btn">Etusivu</a>
+                </div>
+
+                <div class="flex-nav-btn" id="projects_btn-container">
+                    <a href="#page-projects" class="nav-btn" id="projects_btn">Projektit</a>
+                </div>
+
+                <div class="flex-nav-btn" id="contacts_btn-container">
+                    <a href="#page-contact_info" class="nav-btn" id="contacts_btn">Yhteystiedot</a>
+                </div>
             </div>
         </section>
         <section>
-            <img src="catto.webp" alt="Omakuva" id="avatar" width="200" height="200">
+            <img src="catto.webp" alt="Omakuva" id="avatar" width="150" height="150">
             <p>
-                <b>Hei! Olen Rasmus Oksanen,<br>web-kehittäjä-opiskelija.</b>
+                <b>Hei! Olen Rasmus Oksanen, web-kehittäjä-opiskelija.</b>
                 <br>
                 Rakennan portfoliota ja opin jatkuvasti uutta.
             </p>
             <hr>
             <h3>Ominaisuudet:</h3>
-            <table>
+            <table align="center">
                 <tr>
                     <td>
                         <ul>
@@ -34,62 +42,89 @@
                     </td>
                     <td>
                         <ul>
-                            <li>Tämä malli</li>
-                            <li>Näyttää</li>
-                            <li>AI generoidulta</li>
+                            <li>Java</li>
+                            <li>C# & .NET</li>
+                            <li>Unity</li>
                         </ul>
                     </td>
                 </tr>
             </table>
         </section>
-            <hr>
+        <hr>
         <section id="page-projects">
             <h3>Projektit:</h3>
-            <ol>
-                <li>Portfolio-sivu 1</li>
-                <li>Lomakeprojekti</li>
-                <li>Multimedia-demo</li>
-                <li>CSS-layout</li>
-            </ol>
+            <div class="list-container" id="projects_list-container">
+                <ol id="projects_list">
+                    <li>Portfolio-sivu 1</li>
+                    <li>Lomakeprojekti</li>
+                    <li>Multimedia-demo</li>
+                    <li>CSS-layout</li>
+                </ol>
+            </div>
         </section>
         <p>Koodi on <i>runoutta</i> koneille.</p>
-        <p>&copy;2025 Rasmus Oksanen</p>
         <section id="page-contact_info">
             <h1>Ota yhteyttä</h1>
             <form action="#" id="get-in-touch">
-                <label for="fname">Nimi:</label>
-                <input type="text" id="fname" name="fname" class="input_info">
 
-                <label for="email">Sähköposti:</label>
-                <input type="email" id="email" name="email" class="input_info">
+                <div class="form_input-container" id="form_fname-container">
+                    <label for="fname">Nimi:</label>
+                    <input type="text" id="fname" name="fname" class="input_info">
+                </div>
 
-                <label for="phone_num">Puhelinnumero (muoto: 040-1234567):</label>
-                <input type="tel" id="phone_num" 
-                name="phone_num" class="input_info" pattern="[0-9]{3}-[0-9]{7}" placeholder="040-1234567">
+                <div class="form_input-container" id="form_email-container">
+                   <label for="email">Sähköposti:</label>
+                   <input type="email" id="email" name="email" class="input_info">
+                </div>
 
-                <label for="portfolio_or_website">Portfolio / verkkosivu:</label>
-                <input type="text" id="portfolio_or_website" 
-                name="portfolio_or_website" class="input_info" placeholder="https://example.com">
+                <div class="form_input-container" id="form_tel_num-container">
+                    <label for="phone_num">Puhelinnumero (muoto: 040-1234567):</label>
+                    <input type="tel" id="phone_num" 
+                    name="phone_num" class="input_info" pattern="[0-9]{3}-[0-9]{7}" placeholder="040-1234567">
+                </div>
 
-                <label for="add_file_cv">Liitä CV / portfolio (PDF):</label>
-                <input type="file" id="add_file_cv" name="add_file_cv" class="input_info">
+                <div class="form_input-container" id="form_portfolio_or_website-container">
+                    <label for="portfolio_or_website">Portfolio / verkkosivu:</label>
+                    <input type="text" id="portfolio_or_website" 
+                    name="portfolio_or_website" class="input_info" placeholder="https://example.com">
+                </div>
 
-                <label for="meeting_date">Toivottu tapaamispäivä:</label>
-                <input type="date" id="meeting_date" name="meeting_date" class="input_info">
+                <div class="form_input-container" id="form_add_cv-container">
+                    <label for="add_file_cv">Liitä CV / portfolio (PDF):</label>
+                    <input type="file" id="add_file_cv" name="add_file_cv" class="input_info">
+                </div>
 
-                <label for="meeting_time">Toivottu kellonaika:</label>
-                <input type="time" id="meeting_time" name="meeting_time" class="input_info">
+                <div class="form_input-container" id="form_meeting_date-container">
+                    <label for="meeting_date">Toivottu tapaamispäivä:</label>
+                    <input type="date" id="meeting_date" name="meeting_date" class="input_info">
+                </div>
 
-                <label for="work_exp">Työkokemus vuosina:</label>
-                <input type="number" id="work_exp" name="work_exp" class="input_info">
+                <div class="form_input-container" id="form_meeting_time-container">
+                    <label for="meeting_time">Toivottu kellonaika:</label>
+                    <input type="time" id="meeting_time" name="meeting_time" class="input_info">
+                </div>
 
-                <label for="html_skill">HTML taidot (1 - 10):</label>
-                <input type="range" id="html_skill" name="html_skill" class="input_info" min="1" max="10">
+                <div class="form_input-container" id="form_work_exp-container">
+                    <label for="work_exp">Työkokemus vuosina:</label>
+                    <input type="number" id="work_exp" name="work_exp" class="input_info">
+                </div>
 
-                <label for="comment">Viesti:</label>
-                <textarea form="get-in-touch" id="comment" 
-                name="comment" class="input_info" maxlength="500" cols="30" rows="4"></textarea>
+                <div class="form_input-container" id="form_html_skill-container">
+                    <label for="html_skill">HTML taidot (1 - 10):</label>
+                    <input type="range" id="html_skill" name="html_skill" class="input_info" min="1" max="10">
+                </div>
+
+                <div class="form_input-container" id="form_comment-container">
+                    <label for="comment">Viesti:</label>
+                    <textarea form="get-in-touch" id="comment" 
+                    name="comment" class="input_info" maxlength="500" cols="30" rows="4"></textarea>
+                </div>
             </form>
         </section>
+        <footer>
+            <p class="footer-text"><b>&copy;2025 Rasmus Oksanen</b></p>
+            <p class="footer-text">This portfolio does <em>NOT</em> represent the real me or my actual portfolio,<br>
+            since this is merely a school project.</p>
+        </footer>
     </body>
 </html>

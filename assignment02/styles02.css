@@ -1,9 +1,101 @@
-/* To set elements to block display */
-#avatar, .input_info {
+/* Font and other stuff to get a similar look with the example. */
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #323232;
+}
+body {
+    border-top: 10px solid #1c3a85;
+    border-bottom: 10px solid grey;
+    border-style: solid none solid none;
+    margin: 0;
+    background-color: #f4f4f3;
+}
+hr {
+    margin: auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border: 1px solid gray;
+    max-width: 600px;
+}
+p, h1, h3 {
+    text-align: center;
+}
+footer {
+    padding: 5%;
+    font-size: small;
+    background-color: grey;
+}
+.list-container {
+    margin: auto;
+    width: 180px;
+}
+
+/* flexbox container */
+.flex_btns-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+/* Buttons inside flexbox */
+.flex_btns-container>div {
+    text-align: center;
+}
+
+/* Navigation buttons as links, styled as such */
+.nav-btn:link, .nav-btn:visited {
+    padding: 10px;
+    color: #323232;
+    text-decoration: none;
+}
+.nav-btn:hover {
+    color: #cecece;
+    background-color: #323232;
+}
+#front_page-btn {
+    border-radius: 10px 0px 0px 10px;
+}
+#contacts_btn {
+    border-radius: 0px 10px 10px 0px;
+}
+/* ------------------------- */
+
+/* This makes the input fields blocks. otherwise they're all inline
+   with the labels. */
+.input_info {
     display: block;
+    margin-top: 10px;
+}
+
+/* These have the label and the input field as children */
+.form_input-container {
+    display: block;
+    margin: auto;
+    width: 300px;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
 /* Picture */
 #avatar {
-    border-radius: 55%;
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
+
+#page-contact_info {
+    margin-top: 10%;
+}
+
+/* Add selectors to see dotted border 
+div {
+    border: 2px dotted red;
+}
+h1, p, ul, ol, li, form {
+    border: 2px dotted green;
+}
+section {
+    border: 2px dotted blue;
+}
+*/
