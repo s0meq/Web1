@@ -1,10 +1,7 @@
 /* Font and other stuff to get a similar look with the example. */
 * {
     font-family: Arial, Helvetica, sans-serif;
-    /*color: #323232;*/
-    color: antiquewhite;
 }
-/* does not work on all browsers */
 html {
     scroll-behavior: smooth;
 }
@@ -13,28 +10,31 @@ body {
     border-bottom: 10px solid grey;
     border-style: solid none solid none;
     margin: 0;
-    background-color: #500872;
-
-    /* Attempt parallax scroll effect */
+    background-color: #f5f5f5;
+    color: #323232;
+    /* Uncomment for cool colored parallax scroll effect! 
+    color: antiquewhite;
     background-image: linear-gradient(45deg, rgb(78, 15, 141), rgb(39, 3, 138), rgb(11, 9, 148), purple);
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    */
 }
-hr {
-    border: 1px solid gray;
-}
-p, h1, h3 {
+p,
+ h1,
+  h3 {
     text-align: center;
 }
 footer {
     padding: 5%;
     font-size: small;
     background-color: rgb(39, 39, 39);
+    color: antiquewhite;
 }
 #skills-section{
     background-color: rgb(39,39,39);
+    color: antiquewhite;
     padding: 10px;
 }
 .list-container {
@@ -42,6 +42,8 @@ footer {
     width: 180px;
 }
 #skills_table-container {
+    display: flex;
+    justify-content: center;
     margin: auto;
     width: 400px;
 }
@@ -68,7 +70,7 @@ footer {
 }
 .nav-btn:hover {
     color: antiquewhite;
-    background-color: rgba(32,32,32,0);
+    background-color: rgba(32,32,32,0.5);
     transition: ease-in-out 200ms;
 }
 #front_page-btn {
@@ -115,21 +117,24 @@ footer {
     margin-bottom: 10px;
     width: 300px;
     height: 300px;
-    background-image: radial-gradient(circle, rgba(255,255,255,1), rgba(255,255,255,0), rgba(255,0,0,0));
+    background-image: radial-gradient(circle, rgba(32,32,32,1), rgba(255,255,255,0), rgba(255,0,0,0));
 }
 
 #page-contact_info {
     margin-top: 10%;
 }
 
-/* Add selectors to see dotted border 
+/* see dotted border of every important area
 div {
     border: 2px dotted red;
 }
 h1, p, ul, ol, li, form {
     border: 2px dotted green;
 }
+th, td {
+    border: 2px dotted orange;
+}
 section {
-    border: 2px dotted blue;
+    border: 2px dotted yellow;
 }
 */
