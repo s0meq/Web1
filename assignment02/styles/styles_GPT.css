@@ -1,0 +1,136 @@
+/* Font and other stuff to get a similar look with the example. */
+* { font-family: Arial, Helvetica, sans-serif; }
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    color: #323232;
+    background: #f5f5f5;
+    border-width: 10px 0px 10px 0px;
+    border-style: solid;
+    border-color: #1c3a85 transparent grey transparent;
+    /* Uncomment for cool colored parallax scroll effect! (KEEP THISCOMMENT) 
+    color: antiquewhite;
+    background: linear-gradient(45deg, rgb(78,15,141), rgb(39,3,138), rgb(3,100,3) 55%, rgb(11,9,148) 60%, purple) center/cover fixed no-repeat;
+    */
+}
+
+h1, h2, p { text-align: center; }
+
+footer {
+    padding: 5%;
+    font-size: small;
+    background: rgb(39,39,39);
+    color: antiquewhite;
+}
+
+/* ======================================================================= 
+   Picture */
+#avatar {
+    display: block;
+    margin: auto;
+    width: 50%;
+    border: 6px solid gray;
+    border-radius: 50%;
+}
+#img-container {
+    display: flex;
+    justify-content: center;
+    margin: 10px auto;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(32,32,32,1), rgba(255,255,255,0), rgba(255,0,0,0));
+}
+
+/* ===================================================================== */
+#skills-section {
+    margin: auto;
+    background: rgb(39,39,39);
+    color: antiquewhite;
+    padding: 10px;
+    width: 95%;
+}
+.list-container { margin: auto; width: 180px; }
+#skills_table-container {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: 400px;
+}
+
+/* ====================================================================
+   Navigation buttons */
+.flex_btns-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.flex_btns-container > div { text-align: center; }
+
+.nav-btn:link, .nav-btn:visited {
+    display: inline-block;
+    padding: 10px;
+    background: #323232;
+    border: 3px solid #323232;
+    color: antiquewhite;
+    text-decoration: none;
+    transition: background 200ms ease-in-out;
+}
+.nav-btn:hover { background: rgba(32,32,32,0.5); }
+#front_page-btn { border-radius: 10px 0 0 10px; }
+#contacts_btn   { border-radius: 0 10px 10px 0; }
+
+/* ==================================================================
+   Form elements */
+.input_info {
+    display: block;
+    margin: 20px 0 0;
+    padding: 4px;
+    border: 1px solid grey;
+    border-radius: 3px;
+}
+label { font-size: large; }
+#add_file_cv { border: none; }
+#comment { width: 100%; }
+
+/* Firefox slider styling */
+#html_skill {
+    background: none;
+    border: none;
+}
+#html_skill::-moz-range-thumb {
+    -moz-appearance: none;
+    width: 15px; height: 15px;
+    border: none;
+    border-radius: 50%;
+    background: royalblue;
+    cursor: pointer;
+}
+#html_skill::-moz-range-thumb:hover { background: #1c3a85; }
+#html_skill::-moz-range-track,
+#html_skill::-moz-range-progress {
+    height: 8px;
+    border-radius: 15px;
+}
+#html_skill::-moz-range-track   { background: darkgrey; }
+#html_skill::-moz-range-progress{ background: royalblue; }
+
+/* ===================================================================== 
+   Form input containers */
+.form_input-container {
+    display: block;
+    margin: 2% auto;
+    width: 400px;
+}
+#page-contact_info { margin-top: 10%; }
+
+/*
+========================================================================
+Keep this line and everything below, but as commented out.
+   see dotted border of every important area
+    by removing comment end from below and place it here => 
+div { border: 2px dotted red; }
+h1, p, ul, ol, li, form { border: 2px dotted green; }
+th, td { border: 2px dotted orange; }
+section { border: 2px dotted yellow; }
+*/
