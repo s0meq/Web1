@@ -1,6 +1,7 @@
 /* Font and other stuff to get a similar look with the example. */
 * {
     font-family: Arial, Helvetica, sans-serif;
+    
 }
 html {
     scroll-behavior: smooth;
@@ -50,6 +51,41 @@ footer {
     color: antiquewhite;
 }
 /*
+====================================================================
+
+    These are for the nav buttons/links on the top side of the page
+
+   flexbox container */
+.flex_btns-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+/* Buttons inside flexbox */
+.flex_btns-container>div {
+    text-align: center;
+}
+/* Navigation buttons as links, styled as such */
+.nav-btn:link, .nav-btn:visited {
+    padding: 10px;
+    /*color: #323232;*/
+    background-color: #323232;
+    border: 3px solid #323232;
+    color: antiquewhite;
+    text-decoration: none;
+}
+.nav-btn:hover {
+    color: antiquewhite;
+    background-color: rgba(32,32,32,0.5);
+    transition: ease-in-out 200ms;
+}
+#front_page-btn {
+    border-radius: 10px 0px 0px 10px;
+}
+#contacts_btn {
+    border-radius: 0px 10px 10px 0px;
+}
+/*
 =======================================================================
    Picture */
 #avatar {
@@ -84,6 +120,9 @@ footer {
     color: antiquewhite;
     width: 90%;
 }
+.skills_list-item {
+    line-height: 25px;
+}
 .skills_list-item::first-letter {
     font-size: 22px;
     padding: 3px 8px;
@@ -94,10 +133,16 @@ footer {
     color: #323232;
 }
 #skills_table-container {
-    display: flex;
-    justify-content: center;
     margin: auto;
     width: 400px;
+}
+#skills_table-container table {
+    border: none;
+}
+#skills_table-container td {
+    border: none;
+    text-align: left;
+    font-size: 12px;
 }
 /*===================================================================
    Projects list */
@@ -127,41 +172,6 @@ footer {
     margin-right: 10px;
     font-weight: bolder;
     content: "rojekti " counter(item) ": ";
-}
-/*
-====================================================================
-
-    These are for the nav buttons/links on the top side of the page
-
-   flexbox container */
-.flex_btns-container {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-}
-/* Buttons inside flexbox */
-.flex_btns-container>div {
-    text-align: center;
-}
-/* Navigation buttons as links, styled as such */
-.nav-btn:link, .nav-btn:visited {
-    padding: 10px;
-    /*color: #323232;*/
-    background-color: #323232;
-    border: 3px solid #323232;
-    color: antiquewhite;
-    text-decoration: none;
-}
-.nav-btn:hover {
-    color: antiquewhite;
-    background-color: rgba(32,32,32,0.5);
-    transition: ease-in-out 200ms;
-}
-#front_page-btn {
-    border-radius: 10px 0px 0px 10px;
-}
-#contacts_btn {
-    border-radius: 0px 10px 10px 0px;
 }
 /* 
 ==================================================================
