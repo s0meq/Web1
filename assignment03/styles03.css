@@ -25,9 +25,6 @@ body {
     padding: 20px 0px 10px 0px;
     background-color: #f5f5f5;
 }
-li {
-    list-style: none;
-}
 hr {
     color: rgba(32,32,32,0.3);
     width: 80%;
@@ -121,6 +118,7 @@ footer {
     width: 90%;
 }
 .skills_list-item {
+    list-style: none;
     line-height: 25px;
 }
 .skills_list-item::first-letter {
@@ -173,33 +171,56 @@ footer {
     font-weight: bolder;
     content: "rojekti " counter(item) ": ";
 }
+/*
+==================================================================
+    CV & experience table styling
+*/
+/*
+==================================================================
+    Multimedia styling
+*/
+
 /* 
 ==================================================================
- 
+
+    Form styling
+*/
+#page-contact_info {
+    margin: 2vh 10vw;
+    padding: 3vh 2vw 3vh 2vw;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 1px 1px 10px 1px #808080;
+}
+/*
+   These containers inside the form have the label
+   and the input field as children */
+.form_input-container {
+    display: block;
+    margin: 20px 10px;
+    width: 90%;
+}
+/*
    This makes the input fields blocks. otherwise they're all inline
    with the labels. */
 .input_info {
     display: block;
-    margin-top: 10px;
-    border: 1px solid grey;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(171, 171, 171, 0.501);
     border-radius: 3px;
-    margin-top: 20px;
-    padding: 4px;
+    padding: 8px;
 }
 label {
-    font-size: large;
+    font-size: 14px;
+    font-weight: bold;
 }
 /* After the general input field styling, style some
    invidual elements in the same class with their own id.
+
 ===================================================================
-   Every other input field will use a custom border except this. */
-#add_file_cv {
-    border: none;
-}
-#comment {
-    width: 100%;
-}
-/* Firefox specific styling of the html skill slider (because i didn't like
+
+   Firefox specific styling of the html skill slider (because i didn't like
    how the slider looks in my browser), so every other browser should have no
    changes below this. */
 #html_skill {
@@ -229,37 +250,15 @@ label {
     border-radius: 15px;
     background-color: royalblue;
 }
-/*
-    --( Firefox specific styling ends here. )--
-
-=====================================================================
-   These containers inside the form have the label
-   and the input field as children */
-.form_input-container {
-    display: block;
-    margin: auto;
-    width: 400px;
-    margin-top: 2%;
-    margin-bottom: 2%;
+@media only screen and (max-width: 700px) {
+    #content {
+        width: 100%;
+    }
+    #page-contact_info {
+        margin: auto;
+        padding: 3vh 2vw 3vh 2vw;
+        border-radius: 10px;
+        background-color: #f5f5f5;
+        box-shadow: none;
+    }
 }
-
-#page-contact_info {
-    margin-top: 10%;
-}
-/*
-========================================================================
-   see dotted border of every important area
-    by removing comment end from below and place it here => 
-div {
-    border: 2px dotted red;
-}
-h1, p, ul, ol, li, form {
-    border: 2px dotted green;
-}
-th, td {
-    border: 2px dotted orange;
-}
-section {
-    border: 2px dotted yellow;
-}
-*/

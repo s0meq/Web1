@@ -147,8 +147,24 @@
                 </table>
             </section>
             <hr>
+            <section>
+                <h2>Multimedia</h2>
+                <video width="280" height="200" controls>
+                    <source src="#" type="video/mp4">
+                    <source src="#" type="video/ogg">
+                </video>
+                 <audio controls>
+                    <source src="horse.ogg" type="audio/ogg">
+                    <source src="horse.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <iframe width="420" height="315"
+                src="">
+                </iframe> 
+            </section>
+            <hr>
             <section id="page-contact_info">
-                <h1>Ota yhteyttä</h1>
+                <h1 class="form-heading">Ota yhteyttä</h1>
                 <form action="#" id="get-in-touch">
     
                     <div class="form_input-container" id="form_fname-container">
@@ -202,6 +218,10 @@
                         <label for="comment">Viesti:</label>
                         <textarea form="get-in-touch" id="comment" 
                         name="comment" class="input_info" maxlength="500" rows="4"></textarea>
+                    </div>
+
+                    <div class="form_input-container" id="form_submit-container">
+                        <input type="submit" id="submit" name="submit" class="input_info">
                     </div>
                 </form>
             </section>
