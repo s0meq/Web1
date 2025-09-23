@@ -7,7 +7,7 @@
         <title>Portfolio v2</title>
     </head>
     <body>
-        <div id="content">
+        <main id="content">
             <header>
                 <h1>Portfolio</h1>
                 <nav class="flex_btns-container" id="buttons_nav-container">
@@ -33,14 +33,14 @@
                 </nav>
             </header>
             <figure id="img-container">
-                <img src="cattonq.jpeg" alt="Silly car" id="avatar" width="150" height="150">
+                <img src="Media/cattonq.jpeg" alt="Silly car" id="avatar" width="150" height="150">
             </figure>
             <div id="introduction-container">
                 <p><b>Hei! Olen Rasmus Oksanen, web-kehittäjä-opiskelija.</b></p>
                 <p>Rakennan portfoliota ja opin jatkuvasti uutta.</p>
             </div>  
             <section id="page-skills">
-                <hr>
+                <hr class="page_skills-line">
                 <h2>Ominaisuudet:</h2>
                 <div id="skills_table-container">
                     <table id="skills-table">
@@ -48,25 +48,25 @@
                             <td>
                                 <div class="list-container" id="skills_list-container-1">
                                     <ul>
-                                        <li class="skills_list-item"><span>H</span>TML & CSS</li>
-                                        <li class="skills_list-item"><span>J</span>avaScript</li>
-                                        <li class="skills_list-item"><span>R</span>esponsiivinen design</li>
+                                        <li class="skills_list-item"><span>H</span> TML & CSS</li>
+                                        <li class="skills_list-item"><span>J</span> avaScript</li>
+                                        <li class="skills_list-item"><span>R</span> esponsiivinen design</li>
                                     </ul>
                                 </div>
                             </td>
                             <td>
                                 <div class="list-container" id="skills_list-container-2">
                                     <ul>
-                                        <li class="skills_list-item"><span>P</span>rojektit</li>
-                                        <li class="skills_list-item"><span>P</span>remiere</li>
-                                        <li class="skills_list-item"><span>M</span>otivaatio</li>
+                                        <li class="skills_list-item"><span>P</span> rojektit</li>
+                                        <li class="skills_list-item"><span>P</span> remiere</li>
+                                        <li class="skills_list-item"><span>M</span> otivaatio</li>
                                     </ul>
                                 </div>
                             </td>
                         </tr>
                     </table>
                 </div>
-                <hr>
+                <hr class="page_skills-line">
             </section>
             <section id="page-projects">
                 <h2>Projektit:</h2>
@@ -96,73 +96,90 @@
                 </div>
             </section>
             <p>Koodi on <i>runoutta</i> koneille.</p>
-            <hr>
+            <hr class="page-line">
             <section id="page-cv">
                 <h2>CV - Kokemus ja opinnot</h2>
-                <table>
+                <table class="cv-table">
                     <colgroup>
+                        <col style="background-color: rgb(176, 223, 252);">
+                        <col span="4" style="background-color: deepskyblue;">
                     </colgroup>
-                    <tr>
-                        <th>Vuosi</th>
-                        <th>Tehtävä/Opinto</th>
-                        <th>Kuvaus</th>
-                        <th>Sijainti</th>
-                        <th>Lisätiedot</th>
-                    </tr>
-                    <tr>
-                        <td rowspan="2">2023-2025</td>
-                        <td>web-kehittäjä-opinnot</td>
-                        <td>HTML, CSS, JavaScript, projektityöt</td>
-                        <td>Helsinki</td>
-                        <td>Portfolio-sivut, harjoitukset</td>
-                    </tr>
-                    <tr>
-                        <td>UI/UX-kurssi</td>
-                        <td>Design-perusteet ja prototypointi</td>
-                        <td>Etäopetus</td>
-                        <td>Adobe XD, Sigma</td>
-                    </tr>
-                    <tr>
-                        <td>2022</td>
-                        <td>Harjoittelu</td>
-                        <td>Asiakassivujen ylläpito</td>
-                        <td>Espoo</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <td>2019-2021</td>
-                        <td colspan="2">IT-perusopinnot</td>
-                        <td colspan="2">Ohjelmoinnin perusteet ja tietokannat</td>
-                    </tr>
-                    <tr>
-                        <td>2018</td>
-                        <td>Kesätyö</td>
-                        <td>IT-tuki yrityksessä</td>
-                        <td>Vantaa</td>
-                        <td>Windows ja verkkoasetukset</td>
-                    </tr>
-                    <tr>
-                        <td colspan="5">Lisätietoja pyydettäessä</td>
-                    </tr>
+                    <thead>
+                        <tr class="cv-row">
+                            <th class="header-row">Vuosi</th>
+                            <th class="header-row">Tehtävä/Opinto</th>
+                            <th class="header-row">Kuvaus</th>
+                            <th class="header-row">Sijainti</th>
+                            <th class="header-row">Lisätiedot</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="cv-row" id="first-row">
+                            <td id="special-cell" rowspan="2"><b>2023-2025</b></td>
+                            <td>web-kehittäjä-opinnot</td>
+                            <td>HTML, CSS, JavaScript, projektityöt</td>
+                            <td>Helsinki</td>
+                            <td>Portfolio-sivut, harjoitukset</td>
+                        </tr>
+                        <tr class="cv-row" id="second-row">
+                            <td>UI/UX-kurssi</td>
+                            <td>Design-perusteet ja prototypointi</td>
+                            <td>Etäopetus</td>
+                            <td>Adobe XD, Sigma</td>
+                        </tr>
+                        <tr class="cv-row">
+                            <td>2022</td>
+                            <td>Harjoittelu</td>
+                            <td>Asiakassivujen ylläpito</td>
+                            <td>Espoo</td>
+                            <td>-</td>
+                        </tr>
+                        <tr class="cv-row">
+                            <td>2019-2021</td>
+                            <td colspan="2"><b>IT-perusopinnot</b></td>
+                            <td colspan="2"><b>Ohjelmoinnin perusteet ja tietokannat</b></td>
+                        </tr>
+                        <tr class="cv-row">
+                            <td>2018</td>
+                            <td>Kesätyö</td>
+                            <td>IT-tuki yrityksessä</td>
+                            <td>Vantaa</td>
+                            <td>Windows ja verkkoasetukset</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr class="cv-row">
+                            <td id="footer-cell" colspan="5"><b><i>Lisätietoja pyydettäessä</i></b></td>
+                        </tr>
+                    </tfoot>
                 </table>
             </section>
-            <hr>
+            <hr class="page-line">
             <section>
                 <h2>Multimedia</h2>
-                <video width="280" height="200" controls>
-                    <source src="#" type="video/mp4">
-                    <source src="#" type="video/ogg">
-                </video>
-                 <audio controls>
-                    <source src="horse.ogg" type="audio/ogg">
-                    <source src="horse.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-                <iframe width="420" height="315"
-                src="">
-                </iframe> 
+                <div class="multimedia-container">
+                    <h4>Videoesittely</h4>
+                    <video class="multimedia" width="384" height="216" controls>
+                        <source src="Media/gta.mp4" type="video/mp4">
+                        <source src="#" type="video/ogg">
+                    </video>
+                </div>
+                <div class="multimedia-container">
+                    <h4>Podcast-tyylinen äänite</h4>
+                    <audio class="multimedia" src="Media/Audio22.mp3" controls>
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                <div class="multimedia-container">
+                    <h4>Upotus Youtubesta</h4>
+                    <iframe class="multimedia" width="384" height="216" 
+                    src="https://www.youtube.com/embed/YoBb8DaudqE?list=RDYoBb8DaudqE" 
+                    title="Low quality gangnam style 10 hours" frameborder="0" allow="accelerometer; 
+                    autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
             </section>
-            <hr>
+            <hr class="page-line">
             <section id="page-contact_info">
                 <h1 class="form-heading">Ota yhteyttä</h1>
                 <form action="#" id="get-in-touch">
@@ -225,10 +242,10 @@
                     </div>
                 </form>
             </section>
-        </div>
+        </main>
         <footer>
-            <p class="footer-text">This portfolio does <em>NOT</em> represent the real me or my actual skillset<br>
-             mentioned above, since this is merely a school project.</p>
+            <p class="footer-text">This portfolio does <em>NOT</em> (yet) represent the real me or my actual skillset<br>
+             mentioned above, since this is still a school project.</p>
             <p class="footer-text"><b>&copy;2025 Rasmus Oksanen</b></p>
         </footer>
     </body>

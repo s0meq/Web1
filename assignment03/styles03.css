@@ -20,21 +20,14 @@ body {
 }
 #content {
     margin: auto;
-    min-width: fit-content;
-    max-width: 70vw;
+    width: 1000px;
     padding: 20px 0px 10px 0px;
     background-color: #f5f5f5;
 }
-hr {
+.page-line {
     color: rgba(32,32,32,0.3);
+    margin: 20px auto;
     width: 80%;
-}
-table, th, td {
-    border: 1px solid black;
-}
-td {
-    font-size: 14px;
-    text-align: center;
 }
 p,
  h1,
@@ -42,7 +35,7 @@ p,
     text-align: center;
 }
 footer {
-    padding: 5%;
+    padding: 40px;
     font-size: small;
     background-color: rgb(39, 39, 39);
     color: antiquewhite;
@@ -57,6 +50,7 @@ footer {
     margin-top: 20px;
     display: flex;
     justify-content: center;
+    filter: drop-shadow(16px 16px 10px gray);
 }
 /* Buttons inside flexbox */
 .flex_btns-container>div {
@@ -86,12 +80,13 @@ footer {
 =======================================================================
    Picture */
 #avatar {
-    border: 6px solid gray;
+    border: 5px solid darkgray;
     border-radius: 50%;
     display: block;
     margin: auto;
     width: 50%;
 }
+
 #img-container {
     display: flex;
     justify-content: center;
@@ -100,8 +95,9 @@ footer {
     margin-bottom: 10px;
     width: 300px;
     height: 300px;
-    background-image: radial-gradient(circle, rgba(32,32,32,1), rgba(255,255,255,0), rgba(255,0,0,0));
+    filter: drop-shadow(16px 16px 10px gray);
 }
+
 /*
 =====================================================================
     Skills section
@@ -112,12 +108,14 @@ footer {
     margin: auto;
     width: 90%;
     padding: 10px;
+    filter: drop-shadow(16px 16px 10px gray);
 }
-#page-skills hr {
+.page_skills-line {
     color: antiquewhite;
     width: 90%;
 }
 .skills_list-item {
+    font-size: 14px;
     list-style: none;
     line-height: 25px;
 }
@@ -133,14 +131,6 @@ footer {
 #skills_table-container {
     margin: auto;
     width: 400px;
-}
-#skills_table-container table {
-    border: none;
-}
-#skills_table-container td {
-    border: none;
-    text-align: left;
-    font-size: 12px;
 }
 /*===================================================================
    Projects list */
@@ -175,22 +165,74 @@ footer {
 ==================================================================
     CV & experience table styling
 */
+#page-cv {
+    width: 900px;
+    margin: auto;
+}
+.cv-table {
+    width: 100%;
+    text-align: center;
+    border: 1px solid #323232;
+    border-collapse: collapse;
+}
+.header-row {
+    border: 1px solid #323232;
+    color: antiquewhite;
+    background-color: cornflowerblue;
+    height: 50px;
+}
+/**/
+.cv-row:nth-child(2n-1) {
+    background-color: #f5f5f5;
+}
+.cv-row:nth-child(1) {
+    background-color: #f5f5f5;
+}
+.cv-row:nth-child(2) {
+    background-color: rgb(176, 223, 252);
+}
+#special-cell {
+    background-color: deepskyblue;
+}
+/**/
+.cv-row td {
+    border: 1px solid #32323260;
+    font-size: 14px;
+    height: 50px;
+    padding: 0px 4px;
+}
+#footer-cell {
+    background-color: deepskyblue;
+    color: #f5f5f5;
+}
+
 /*
 ==================================================================
     Multimedia styling
 */
-
+.multimedia-container {
+    width: fit-content;
+    margin: auto;
+    text-align: center;
+}
+.multimedia {
+    border: 1px solid #323232;
+    border-radius: 8px;
+    filter: drop-shadow(16px 16px 10px gray);
+    background-color: #f1f3f4;
+}
 /* 
 ==================================================================
 
     Form styling
 */
 #page-contact_info {
-    margin: 2vh 10vw;
-    padding: 3vh 2vw 3vh 2vw;
+    margin: /*25px 120px*/25px auto;
+    width: 650px;
+    padding: 25px 0px 35px 20px;
     border-radius: 10px;
     background-color: white;
-    box-shadow: 1px 1px 10px 1px #808080;
+    filter: drop-shadow(16px 16px 10px gray);
 }
 /*
    These containers inside the form have the label
@@ -199,6 +241,7 @@ footer {
     display: block;
     margin: 20px 10px;
     width: 90%;
+    max-width: 700px;
 }
 /*
    This makes the input fields blocks. otherwise they're all inline
@@ -215,9 +258,12 @@ label {
     font-size: 14px;
     font-weight: bold;
 }
-/* After the general input field styling, style some
-   invidual elements in the same class with their own id.
-
+#submit {
+    background-color: #323232;
+    color: antiquewhite;
+    margin-top: 10px;
+}
+/* 
 ===================================================================
 
    Firefox specific styling of the html skill slider (because i didn't like
@@ -250,15 +296,52 @@ label {
     border-radius: 15px;
     background-color: royalblue;
 }
+@media only screen and (max-width: 1000px) {
+    #content {
+        min-width: 100%;
+        width: 100%;
+    }
+    #page-cv {
+        width: 90vw;
+    }
+}
 @media only screen and (max-width: 700px) {
     #content {
+        min-width: 100%;
         width: 100%;
+/*
+        margin: auto;
+        min-width: 700px;
+        width: fit-content;
+        max-width: 70vw;
+        padding: 20px 0px 10px 0px;
+        background-color: #f5f5f5;
+*/
+    }
+    #page-cv {
+        width: 95vw;
+        margin: auto;
+    }
+    .cv-table {
+        font-size: 12px;
+    }
+    .cv-row td {
+        font-size: 12px;
     }
     #page-contact_info {
         margin: auto;
+        width: 90vw;
         padding: 3vh 2vw 3vh 2vw;
-        border-radius: 10px;
         background-color: #f5f5f5;
-        box-shadow: none;
+        filter: none;
     }
+
+
+
+    .form_input-container {
+        margin: auto;
+        width: 80%;
+        max-width: 400px;
+    }
+
 }
