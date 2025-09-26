@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="instructions" content="Vain ohjeet ja vinkit, älä lisää valmiita CSS-tyylejä.">
-  <title>CSS Harjoitussivu – Pohjakoodi</title>
+  <link rel="stylesheet" href="styles04.css">
+  <title>Tehtävä 4</title>
 </head>
 <body>
 
@@ -19,9 +20,9 @@
   </nav>
 </header>
 
-<section>
+<section class="hero-section">
   <img src="https://images.pexels.com/photos/158028/bellingrath-gardens-alabama-landscape-scenic-158028.jpeg" alt="Maisemakuva">
-  <div>
+  <div class="hero-text">
     <h2>Hero-sektio</h2>
     <p>Tässä kuva on oikeana &lt;img&gt;-elementtinä. Korkeus ja muu ulkoasu määritellään CSS:llä.</p>
   </div>
@@ -31,14 +32,14 @@
   <article>
     <h2>Box-malli & Float</h2>
     <p>Tässä näkyy kuva, joka kelluu vasemmalle. Teksti kiertää kuvan ympärillä.</p>
-    <div>
-      <img src="https://via.placeholder.com/150" alt="Esimerkkikuva">
+    <div class="article-img-container">
+      <img src="https://placehold.co/150" alt="Esimerkkikuva">
       <p>Tekstiä kuvan ympärillä.</p>
     </div>
 
-    <h2>Position-esimerkki</h2>
-    <p>Alla oleva laatikko on sijoitettu suhteessa parent-elementtiin. Määritä position CSS:llä.</p>
-    <div>
+    <h2 class="clear">Position-esimerkki</h2>
+    <p class="clear">Alla oleva laatikko on sijoitettu suhteessa parent-elementtiin. Määritä position CSS:llä.</p>
+    <div class="clear">
       Parent-div
       <div>Absolute-child</div>
     </div>
@@ -59,7 +60,7 @@
 </section>
 
 <footer>
-  <p>Footer © 2025</p>
+  <p>&copy; Rasmus "s0me" Oksanen 2025</p>
 </footer>
 
 </body>
