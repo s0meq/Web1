@@ -39,9 +39,9 @@
 
     <h2 class="clear">Position-esimerkki</h2>
     <p class="clear">Alla oleva laatikko on sijoitettu suhteessa parent-elementtiin. Määritä position CSS:llä.</p>
-    <div class="clear">
+    <div class="clear" id="parent_div">
       Parent-div
-      <div>Absolute-child</div>
+      <div id="absolute_child">Absolute-child</div>
     </div>
   </article>
 
@@ -51,7 +51,7 @@
   </aside>
 </main>
 
-<section>
+<section class="container-query-section">
   <h2>Container Query</h2>
   <p>Tässä kortti voi vaihtaa ulkoasua oman leveyden mukaan.</p>
   <div>
@@ -60,7 +60,11 @@
 </section>
 
 <footer>
-  <p>&copy; Rasmus "s0me" Oksanen 2025</p>
+  <p class="footer-text">
+    &copy; Rasmus "s0me" Oksanen 2025 
+    <br>
+    This is a footer. Commonly found beneath the main content as a last element on a website.
+  </p>
 </footer>
 
 </body>
