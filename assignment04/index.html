@@ -13,9 +13,9 @@
   <h1>CSS Harjoitussivu</h1>
   <nav>
     <ul>
-      <li><a href="#">Etusivu</a></li>
-      <li><a href="#">Tietoa</a></li>
-      <li><a href="#">Portfolio</a></li>
+      <li class="tooltip"><a href="#">Etusivu</a><span class="tooltiptext">Mene etusivulle</span></li>
+      <li class="tooltip"><a href="#">Tietoa</a><span class="tooltiptext">Mene tiedot sivulle</span></li>
+      <li class="tooltip"><a href="#">Portfolio</a><span class="tooltiptext">Mene portfolio sivulle</span></li>
     </ul>
   </nav>
 </header>
@@ -54,8 +54,8 @@
 <section class="container-query-section">
   <h2>Container Query</h2>
   <p>Tässä kortti voi vaihtaa ulkoasua oman leveyden mukaan.</p>
-  <div>
-    Kortti
+  <div class="card">
+    Kortti (kun container on alle 300px, se on valkoinen, 300-799 ruskea, 800-1199 punainen ja 1200 ja ylös violetti)
   </div>
 </section>
 
