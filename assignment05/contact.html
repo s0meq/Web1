@@ -1,0 +1,57 @@
+<section id="contact">
+  <h2>Ota yhteyttä</h2>
+  <p>Harjoituksen tarkoitus: Lomake voidaan toteuttaa joko <strong>CSS Gridillä</strong> tai <strong>Flexboxilla</strong>. Tarkoituksena on harjoitella responsiivista asettelua siten, että lomake toimii niin leveällä kuin kapealla näytöllä.</p>
+  <form class="contact-form">
+    <div class="form-row">
+      <label for="name">Nimi:</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+
+    <div class="form-row">
+      <label for="email">Sähköposti:</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+
+    <div class="form-row">
+      <label for="phone">Puhelinnumero:</label>
+      <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{6,7}" placeholder="040-1234567" required>
+    </div>
+
+    <div class="form-row">
+      <label for="website">Portfolio / verkkosivu:</label>
+      <input type="url" id="website" name="website" placeholder="https://example.com">
+    </div>
+
+    <div class="form-row">
+      <label for="resume">Liitä CV / portfolio (PDF):</label>
+      <input type="file" id="resume" name="resume" accept=".pdf">
+    </div>
+
+    <div class="form-row form-row-double">
+      <label for="meeting-date">Toivottu tapaamispäivä:</label>
+      <input type="date" id="meeting-date" name="meeting-date">
+
+      <label for="meeting-time">Toivottu kellonaika:</label>
+      <input type="time" id="meeting-time" name="meeting-time">
+    </div>
+
+    <div class="form-row">
+      <label for="experience">Työkokemus (vuosina):</label>
+      <input type="number" id="experience" name="experience" min="0" max="50">
+    </div>
+
+    <div class="form-row">
+      <label for="skill">HTML-taidot (1–10):</label>
+      <input type="range" id="skill" name="skill" min="1" max="10">
+    </div>
+
+    <div class="form-row">
+      <label for="message">Viesti:</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+    </div>
+
+    <div class="form-row">
+      <button type="submit">Lähetä</button>
+    </div>
+  </form>
+</section>

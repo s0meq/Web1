@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body {
+    margin: 0;
+}
+.grid-container {
+    display: grid;
+    grid-template-areas: 
+        "header header"
+        "menu content"
+        "info content";
+}
+header {
+    grid-area: header;
+    background-color: #323232;
+    color: white;
+    padding: 7px 5px;
+}
+
+/*
+Navigation links
+*/
+nav {
+    grid-area: menu;
+    background-color: darkgray;
+    width: 200px;
+}
+nav > ul {
+    list-style: none;
+    margin-top: 10px;
+    padding: 10px;
+}
+li {
+    display: flex;
+    align-items: center;
+    padding: 5px 2px;
+    border: 1px solid green;
+}
+li > a {
+    color: black;
+    
+    border: 1px solid yellow;
+}
+li > a:link {
+    text-decoration: none;
+}
+.active {
+    color: brown;
+    font-weight: 800;
+}
+aside {
+    grid-area: info;
+    background-color: lightgray;
+    width: 200px;
+    padding: 10px;
+    border: 1px solid purple;
+}
+main {
+    grid-area: content;
+    border: 1px solid red;
+    min-height: 80vh;
+}
+footer {
+    visibility: hidden;
+}
+
+/*
+Main page content-grid
+*/
+.multi-grid {
+    display: grid;
+    grid-template-columns: 16% 16% 16% 16% 16% 16%;
+    gap: 10px;
+
+}
+.grid-item {
+    border-radius: 10px;
+    background-color: rgb(191, 211, 248);
+    text-align: center;
+    padding: 10px;
+}
+.item1, .item2, .item3, .item10, .item11, .item12 {
+    grid-column: span 2;
+}
+.item4, .item5, .item13, .item14, .item15 {
+    grid-column: span 3;
+}
+
+@media only screen and (max-width: 1200px) {
+
+    .multi-grid {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        gap: 10px;
+
+    }
+    .item1, .item2, .item3, .item10, .item11, .item12 {
+        grid-column: span 1;
+    }
+    .item4, .item5, .item13, .item14, .item15 {
+        grid-column: span 1;
+    }
+}
+@media only screen and (max-width: 800px) {
+    .grid-container {
+        display: grid;
+        grid-template-areas: 
+            "header"
+            "menu"
+            "content"
+            "info"
+            "footer";
+    }
+    nav {
+        width: 100%;
+    }
+    nav > ul {
+        display: flex;
+        justify-content: space-evenly;
+        border: 2px solid blue;
+    }
+    aside {
+        width: 100%;
+    }
+    footer {
+        visibility: visible;
+        background-color: #323232;
+        color: white;
+        text-align: center;
+    }
+    .multi-grid {
+        display: grid;
+        grid-template-columns: 100%;
+        gap: 10px;
+    }
+}
