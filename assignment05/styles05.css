@@ -6,11 +6,15 @@ body {
     margin: 0;
 }
 .grid-container {
+    min-height: 100vh;
     display: grid;
     grid-template-areas: 
         "header header"
         "menu content"
-        "info content";
+        "info content"
+        "footer footer";
+    grid-template-columns: 200px auto;
+    grid-template-rows: auto 1fr auto auto;
 }
 header {
     grid-area: header;
@@ -25,7 +29,6 @@ Navigation links
 nav {
     grid-area: menu;
     background-color: darkgray;
-    width: 200px;
 }
 nav > ul {
     list-style: none;
@@ -36,12 +39,9 @@ li {
     display: flex;
     align-items: center;
     padding: 5px 2px;
-    border: 1px solid green;
 }
 li > a {
     color: black;
-    
-    border: 1px solid yellow;
 }
 li > a:link {
     text-decoration: none;
@@ -50,20 +50,21 @@ li > a:link {
     color: brown;
     font-weight: 800;
 }
+/*--------*/
 aside {
     grid-area: info;
     background-color: lightgray;
-    width: 200px;
     padding: 10px;
-    border: 1px solid purple;
 }
 main {
     grid-area: content;
-    border: 1px solid red;
-    min-height: 80vh;
+    padding: 10px;
 }
 footer {
-    visibility: hidden;
+    grid-area: footer;
+    background-color: #323232;
+    color: white;
+    text-align: center;
 }
 
 /*
@@ -88,11 +89,27 @@ Main page content-grid
     grid-column: span 3;
 }
 
-@media only screen and (max-width: 1200px) {
+/*
+Projects page specific
+*/
 
+
+
+@media only screen and (max-width: 1200px) {
+    .grid-container {
+        min-height: 100vh;
+        display: grid;
+        grid-template-areas: 
+            "header header"
+            "menu content"
+            "info content"
+            "footer footer";
+        grid-template-columns: 200px auto;
+        grid-template-rows: auto 1fr auto auto;
+    }
     .multi-grid {
         display: grid;
-        grid-template-columns: 50% 50%;
+        grid-template-columns: 1fr 1fr;
         gap: 10px;
 
     }
@@ -101,6 +118,11 @@ Main page content-grid
     }
     .item4, .item5, .item13, .item14, .item15 {
         grid-column: span 1;
+    }
+    footer {
+        background-color: #323232;
+        color: white;
+        text-align: center;
     }
 }
 @media only screen and (max-width: 800px) {
@@ -112,6 +134,8 @@ Main page content-grid
             "content"
             "info"
             "footer";
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto auto auto;
     }
     nav {
         width: 100%;
@@ -119,7 +143,6 @@ Main page content-grid
     nav > ul {
         display: flex;
         justify-content: space-evenly;
-        border: 2px solid blue;
     }
     aside {
         width: 100%;
