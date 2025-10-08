@@ -35,7 +35,7 @@ nav > ul {
     margin-top: 10px;
     padding: 10px;
 }
-li {
+nav > ul > li {
     display: flex;
     align-items: center;
     padding: 5px 2px;
@@ -90,10 +90,11 @@ Main page content-grid
 }
 
 /*
-Projects page specific
+Projects page
 */
 .projects {
     display: flex;
+    flex-wrap: wrap;
 }
 .project-card {
     flex: 1;
@@ -101,6 +102,9 @@ Projects page specific
     border-radius: 10px;
     margin: 10px;
     padding: 10px;
+}
+.project-content > p {
+    height: 2em;
 }
 .tags > span {
     background-color: rgb(232, 232, 232);
@@ -125,10 +129,40 @@ Projects page specific
     color: white;
 }
 
+/*
+Contacts page
+*/
+.contact-form {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px 20px;
+    max-width: 700px;
+    margin: auto;
+}
+.form-row > button, input, textarea {
+    display: block;
+    width: 100%;
+    border: 1px solid rgba(171, 171, 171, 0.501);
+    border-radius: 3px;
+    padding: 8px;
+}
+.form-row-double {
+    display: grid;
+    row-gap: 5px;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+.form-row > button {
+    background-color: #323232;
+    color: white;
+}
+label {
+    font-size: 14px;
+    font-weight: bold;
+}
 
 @media only screen and (max-width: 1200px) {
     .grid-container {
-        min-height: 100vh;
         display: grid;
         grid-template-areas: 
             "header header"
@@ -156,7 +190,7 @@ Projects page specific
         text-align: center;
     }
 }
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 768px) {
     .grid-container {
         display: grid;
         grid-template-areas: 
@@ -166,7 +200,7 @@ Projects page specific
             "info"
             "footer";
         grid-template-columns: auto;
-        grid-template-rows: auto auto auto auto auto;
+        grid-template-rows: auto auto 1fr auto auto;
     }
     nav {
         width: 100%;
@@ -188,5 +222,27 @@ Projects page specific
         display: grid;
         grid-template-columns: 100%;
         gap: 10px;
+    }
+    .projects {
+        font-size: smaller;
+    }
+    .project-card > img {
+        min-width: 170px;
+        width: 100%;
+        height: auto;
+    }
+    .project-content > p {
+        height: 4em;
+    }
+    .contact-form {
+        display: block;
+        margin: auto 20px;
+    }
+    .form-row {
+        margin: 10px 0px;
+    }
+    .form-row-double {
+        display: block;
+        align-items: center;
     }
 }
