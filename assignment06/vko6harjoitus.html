@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript-harjoitukset 1–11</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>JavaScript-harjoituksia 1–11</h1>
+
+  <!-- 1. Hei maailma -->
+  <section>
+    <h2>1. Hei maailma</h2>
+    <p>Tee painike, jota klikkaamalla sivulle ilmestyy teksti <strong>"Hei, maailma!"</strong>.</p>
+    <p><em>Vinkki:</em> Käytä <code>onclick</code>-attribuuttia ja muuta <code>innerText</code>-arvoa.</p>
+    <button onclick="naytaHeiMaailma()">Suorita</button>
+    <div id="tulos1"></div>
+  </section>
+
+  <!-- 2. Tervehdys nimellä -->
+  <section>
+    <h2>2. Tervehdys nimellä</h2>
+    <p>Luo tekstikenttä, johon käyttäjä syöttää nimensä. Painike näyttää viestin <strong>"Hei, [nimi]!"</strong>.</p>
+    <p><em>Vinkki:</em> Hae kentän arvo <code>.value</code> ja näytä se tulos-divissä.</p>
+    <input type="text" id="nimi2" placeholder="Kirjoita nimesi">
+    <button onclick="tervehdiNimella()">Tervehdi</button>
+    <div id="tulos2"></div>
+  </section>
+
+  <!-- 3. Laskutoimitukset -->
+  <section>
+    <h2>3. Laskutoimitukset</h2>
+    <p>Tee kaksi lukukenttää ja painike, joka laskee summan, erotuksen, tulon ja osamäärän.</p>
+    <p><em>Vinkki:</em> Muunna syötteet numeroiksi <code>Number()</code>-funktiolla.</p>
+    <input type="number" id="lukuA3" placeholder="Luku a">
+    <input type="number" id="lukuB3" placeholder="Luku b">
+    <button onclick="laske3()">Laske</button>
+    <div id="tulos3"></div>
+  </section>
+
+  <!-- 4. Oletko täysi-ikäinen -->
+  <section>
+    <h2>4. Oletko täysi-ikäinen?</h2>
+    <p>Tee kenttä, johon käyttäjä syöttää ikänsä. Näytä viesti <strong>"Olet täysi-ikäinen"</strong> tai <strong>"Olet alaikäinen"</strong>.</p>
+    <p><em>Vinkki:</em> Käytä <code>if</code>-ehtoa ja muuta tulos-divin tekstiä.</p>
+    <input type="number" id="ika4" placeholder="Syötä ikäsi">
+    <button onclick="tarkistaIka4()">Tarkista</button>
+    <div id="tulos4"></div>
+  </section>
+
+  <!-- 5. Numerot 1–10 -->
+  <section>
+    <h2>5. Numerot 1–10</h2>
+    <p>Tee painike, joka tulostaa sivulle numerot 1–10 välilyönnein erotettuna.</p>
+    <p><em>Vinkki:</em> Käytä <code>for</code>-silmukkaa ja luo merkkijono.</p>
+    <button onclick="tulostaNumerot5()">Tulosta</button>
+    <div id="tulos5"></div>
+  </section>
+
+  <!-- 6. FizzBuzz -->
+  <section>
+    <h2>6. FizzBuzz</h2>
+    <p>Tee painike, joka tulostaa luvut 1–50. Jos luku on jaollinen 3:lla, näytä "Fizz"; jos 5:llä, "Buzz"; molemmilla, "FizzBuzz".</p>
+    <p><em>Vinkki:</em> Käytä <code>if / else</code>-rakennetta ja tulosta merkkijono.</p>
+    <button onclick="fizzBuzz6()">Suorita</button>
+    <div id="tulos6"></div>
+  </section>
+
+  <!-- 7. Funktio – neliö -->
+  <section>
+    <h2>7. Funktio – neliö</h2>
+    <p>Tee kenttä, johon käyttäjä syöttää luvun. Painike laskee luvun neliön.</p>
+    <p><em>Vinkki:</em> Tee yksinkertainen funktio ja kerro luku itsellään.</p>
+    <input type="number" id="luku7" placeholder="Syötä luku">
+    <button onclick="laskeNelio7()">Laske neliö</button>
+    <div id="tulos7"></div>
+  </section>
+
+  <!-- 8. Objekti – auto -->
+  <section>
+    <h2>8. Objekti – auto</h2>
+    <p>Luo kolme kenttää (merkki, malli, vuosi) ja painike, joka näyttää lauseen <strong>"Autosi on [vuosi] [merkki] [malli]"</strong>.</p>
+    <p><em>Vinkki:</em> Tallenna tiedot muuttujiksi ja yhdistä merkkijonoksi.</p>
+    <input type="text" id="merkki8" placeholder="Merkki">
+    <input type="text" id="malli8" placeholder="Malli">
+    <input type="number" id="vuosi8" placeholder="Vuosi">
+    <button onclick="luoAuto8()">Luo auto</button>
+    <div id="tulos8"></div>
+  </section>
+
+  <!-- 9. Taulukko ja silmukka -->
+  <section>
+    <h2>9. Taulukko ja silmukka</h2>
+    <p>Luo kenttä, johon voi syöttää lukuja pilkuilla erotettuna. Painike laskee niiden summan.</p>
+    <p><em>Vinkki:</em> Jaa merkkijono <code>split(",")</code>-funktiolla ja laske summa silmukassa.</p>
+    <input type="text" id="luvut9" placeholder="Esim. 2,4,6,8">
+    <button onclick="laskeSumma9()">Laske summa</button>
+    <div id="tulos9"></div>
+  </section>
+
+  <!-- 10. Sanalaskuri -->
+  <section>
+    <h2>10. Sanalaskuri</h2>
+    <p>Luo tekstialue. Painike laskee kirjoitettujen sanojen määrän.</p>
+    <p><em>Vinkki:</em> Käytä <code>split(" ")</code> ja <code>.length</code>.</p>
+    <textarea id="teksti10" placeholder="Kirjoita lause..."></textarea>
+    <button onclick="laskeSanat10()">Laske sanat</button>
+    <div id="tulos10"></div>
+  </section>
+
+  <!-- 11. Palindromi -->
+  <section>
+    <h2>11. Palindromi</h2>
+    <p>Luo kenttä, johon syötetään sana. Painike tarkistaa, onko sana sama etu- ja takaperin.</p>
+    <p><em>Vinkki:</em> Käännä merkkijono silmukalla ja vertaa alkuperäiseen.</p>
+    <input type="text" id="sana11" placeholder="Kirjoita sana">
+    <button onclick="tarkistaPalindromi11()">Tarkista</button>
+    <div id="tulos11"></div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
