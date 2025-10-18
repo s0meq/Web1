@@ -72,7 +72,6 @@ function luoAuto8() {
 
 // 9.
 function laskeSumma9() {
-    
     let splitStr = document.getElementById("luvut9").value.split(",");
     let sumOfString = 0;
     for (let i = 0; i < splitStr.length; i++) {
@@ -83,10 +82,26 @@ function laskeSumma9() {
 
 // 10.
 function laskeSanat10() {
-    // TODO count words from a text area input
+    let wordsArr = document.getElementById("teksti10").value.split(" ");
+    document.getElementById("tulos10").innerHTML = wordsArr.length;
 }
 
 // 11.
 function tarkistaPalindromi11() {
-    // TODO check if a word is a palindrome
+    let palindromeCandidate = document.getElementById("sana11").value.toLowerCase().split("");
+    let palindromeChecked = [];
+    let isPalindrome = true;
+    for (let i = palindromeCandidate.length - 1; i >= 0; i--) {
+        let extraIndex = (palindromeCandidate.length - 1) - i;
+        palindromeChecked[extraIndex] = palindromeCandidate[i];
+    }
+    for (let i = 0; i < palindromeChecked.length; i++) {
+        console.log(palindromeCandidate[i] + " " + palindromeChecked[i]);
+        if (palindromeCandidate[i] != palindromeChecked[i]){
+            isPalindrome = false;
+        }
+    }
+    console.log(isPalindrome);
+    document.getElementById("tulos11").innerHTML = palindromeChecked.join("").concat("<br> isPalindrome: ", isPalindrome);
+
 }
