@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles06.css">
+  <link rel="stylesheet" href="styles07.css">
   <title>Oma blogi – vaihe 1</title>
 </head>
 <body>
@@ -26,7 +26,7 @@
     <input type="text" id="kirjoittaja">
 
     <label for="paiva">Julkaisupäivä:</label>
-    <input type="date" id="paiva">
+    <input type="date" id="paiva" min="">
 
     <label for="sisalto">Sisältö:</label>
     <textarea id="sisalto"></textarea>
@@ -34,12 +34,14 @@
     <label for="kuva">Kuvan osoite (URL):</label>
     <input type="url" id="kuva" placeholder="https://...jpg">
 
-    <label>
-      Näytä julkisena
-      <input type="checkbox" id="julkinen">
-    </label>
+    <div class="formbottom-div">
+      <label>
+        Näytä julkisena
+        <input type="checkbox" id="julkinen">
+      </label>
+      <button type="button" id="lisaaBtn">Lisää merkintä</button>
+    </div>
 
-    <button type="button" id="lisaaBtn">Lisää merkintä</button>
     <div id="ohje"></div>
   </form>
 
