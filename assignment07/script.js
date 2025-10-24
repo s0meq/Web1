@@ -1,38 +1,63 @@
-// Get today's date
-const today = new Date();
+// Object for html input elements
+const elements = {
+    heading: document.getElementById("otsikko"),
+    author: document.getElementById("kirjoittaja"),
+    date: document.getElementById("paiva"),
+    textContent: document.getElementById("sisalto"),
+    picturePath: document.getElementById("kuva"),
+    isPublic: document.getElementById("julkinen"),
+    addBtn: document.getElementById("lisaaBtn"),
+    blogList: document.getElementById("blogiLista")
+}
+
+// Blog post object constructor
+function blogPost(blogId) {
+    this.heading = elements.heading.value;
+    this.author = elements.author.value;
+    this.date = elements.date.value;
+    this.textContent = elements.textContent.value;
+    this.picturePath = elements.picturePath.value;
+    this.isPublic = elements.isPublic.checked;
+    this.blogId = blogId;
+}
+
+// Array to keep track of blog posts posted
+const blogPosts = [];
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Make an object consisting of the html input elements
-    // to get access to their values easier
-    const formInputs = {
-        heading: document.getElementById("otsikko"),
-        author: document.getElementById("kirjoittaja"),
-        datePicker: document.getElementById("paiva"),
-        textContent: document.getElementById("sisalto"),
-        picturePath: document.getElementById("kuva"),
-        isPublic: document.getElementById("julkinen")
-    };
-    formInputs.datePicker.valueAsDate = today; // Default date
-    formInputs.datePicker.setAttribute("min", today); // Min date today
+    let today = new Date();
+    elements.date.valueAsDate = today; // Default date
+    elements.date.setAttribute("min", today.toISOString().split("T")[0]); // Min date today
 
-    // Eventlistener for clicking the button inside the DOMContentLoaded event listener to use 
-    // formInputs fields easier
-    document.getElementById("lisaaBtn").addEventListener("click", () => addPost(formInputs))
+    elements.addBtn.addEventListener("click", () => addPost());
 })
 
 
-function addPost(formInputs) {
+function addPost() {
+    let newBlogPost = new blogPost(blogPosts.length + 1);
+    blogPosts.push(newBlogPost);
+    console.log(blogPosts.length); // Debug
 
-    console.log(formInputs.isPublic.checked);
+    elements.blogList.innerHTML += `
+    <article>
+        <h2>${newBlogPost.heading}</h2>
+        <h3><i>${newBlogPost.author}</i> - ${newBlogPost.date}</h3>
+        <p>${newBlogPost.textContent}</p>
+        <div class="image-div">
+            <img src="${newBlogPost.picturePath}">
+        </div>
+    </article>
+    `;
 
-    clearFields(formInputs);
+    clearFields();
 }
 
 // After adding a new blog post, automatically reset every input field
-function clearFields(formInputs) {
-    formInputs.heading.value = "";
-    formInputs.author.value = "";
-    formInputs.datePicker.valueAsDate = today;
-    formInputs.textContent.value = "";
-    formInputs.picturePath.value = "";
+function clearFields() {
+    elements.heading.value = "";
+    elements.author.value = "";
+    elements.date.valueAsDate = new Date();
+    elements.textContent.value = "";
+    elements.picturePath.value = "";
+    elements.isPublic.checked = false;
 }

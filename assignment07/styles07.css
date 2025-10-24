@@ -23,12 +23,14 @@ h1 {
 /* Filter selector section */
 .filter-selector-div {
     display: flex;
+    position: sticky;
+    top: 10px;
     align-items: center;
     justify-content: space-between;
     background-color: #1e1e1e;
     width: 90%;
     max-width: 600px;
-    padding: 20px;
+    padding: 15px;
     margin: 15px 0;
     border-radius: 6px;
 }
@@ -40,7 +42,7 @@ form {
     gap: 10px;
     background-color: #1e1e1e;
     width: 90%;
-    max-width: 600px;
+    max-width: 700px;
     padding: 20px;
     margin: 15px 0;
     border-radius: 6px;
@@ -105,9 +107,15 @@ button:hover {
 }
 
 /* Blog entry list section */
+#blogiLista {
+    width: 90%;
+    max-width: 700px;
+}
+
 #blogiLista > article {
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
+    background-color: #1e1e1e;
+    border-left: 5px solid #3a3a3a;
+    color: #f0f0f0;
     border-radius: 6px;
     padding: 15px;
     margin-top: 10px;
@@ -119,7 +127,7 @@ button:hover {
 
 /* Instruction text */
 #ohje {
-    color: #666;
+    color: #f0f0f0;
     font-size: 13px;
     margin-top: 5px;
 }
