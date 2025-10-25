@@ -1,4 +1,4 @@
-// Object for html input elements
+// Object for html input elements to have easier access to them
 const elements = {
     heading: document.getElementById("otsikko"),
     author: document.getElementById("kirjoittaja"),
@@ -21,7 +21,7 @@ function blogPost(blogId) {
     this.blogId = blogId;
 }
 
-// Array to keep track of blog posts posted
+// Array to keep track of blog post objects
 const blogPosts = [];
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -32,23 +32,35 @@ document.addEventListener("DOMContentLoaded", () => {
     elements.addBtn.addEventListener("click", () => addPost());
 })
 
-
+// Add button event handler
 function addPost() {
     let newBlogPost = new blogPost(blogPosts.length + 1);
     blogPosts.push(newBlogPost);
     console.log(blogPosts.length); // Debug
 
-    elements.blogList.innerHTML += `
-    <article>
+    // Create an id of a blogpost based on the blogposts array length+1 and the name of the author
+    //(TODO: Figure out a better id method)
+    // and then make the actual html element to show the posting on the page. 
+    let articleId = newBlogPost.author.trim().toLowerCase().concat("_", newBlogPost.blogId);
+    let article = document.createElement("article");
+    article.setAttribute("id", articleId);
+    article.innerHTML = `
         <h2>${newBlogPost.heading}</h2>
         <h3><i>${newBlogPost.author}</i> - ${newBlogPost.date}</h3>
         <p>${newBlogPost.textContent}</p>
         <div class="image-div">
             <img src="${newBlogPost.picturePath}">
         </div>
-    </article>
     `;
+    elements.blogList.appendChild(article);
+    console.log(article.getAttribute("id") + " is now posted!");
 
+    // Grey out the blog post if it isn't public
+    if (!newBlogPost.isPublic) {
+        article.style.filter = "grayscale(60%)"
+        article.style.color = "#4f4f4f"
+        article.style.borderColor = "#4f4f4f"
+    }
     clearFields();
 }
 
