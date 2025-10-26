@@ -7,7 +7,8 @@ const elements = {
     picturePath: document.getElementById("kuva"),
     isPublic: document.getElementById("julkinen"),
     addBtn: document.getElementById("lisaaBtn"),
-    blogList: document.getElementById("blogiLista")
+    blogList: document.getElementById("blogiLista"),
+    filterSelector: document.getElementById("suodatin")
 }
 
 // Blog post object constructor
@@ -19,6 +20,32 @@ function blogPost(blogId) {
     this.picturePath = elements.picturePath.value;
     this.isPublic = elements.isPublic.checked;
     this.blogId = blogId;
+    // Since there is no deleting blog posts, array length as the base id is safe.
+    this.generateHtml = () => {
+        let article = document.createElement("article");
+        let articleInner = `<h2>${this.heading}</h2>
+                            <h3><i>${this.author}</i> - ${this.date}</h3>
+                            <p>${this.textContent}</p>
+                            <div class="image-div">
+                              <img src="${this.picturePath}">
+                            </div>`;
+        article.setAttribute("id", this.blogId);
+        article.innerHTML = articleInner;
+        // Gray out the blog post if it isn't public
+        article.setAttribute("class", this.isPublic ? "public-post" : "private-post");
+        return article;
+    };
+    this.htmlString = this.generateHtml();
+    // Debug
+    this.postToString = () => {
+        return this.heading + "\n"
+            + this.author + "\n" 
+            + this.date + "\n isPublic: "
+            + this.isPublic + "\n"
+            + this.textContent + "\n"
+            + this.picturePath + "\n"
+            + this.blogId;
+    };
 }
 
 // Array to keep track of blog post objects
@@ -29,39 +56,37 @@ document.addEventListener("DOMContentLoaded", () => {
     elements.date.valueAsDate = today; // Default date
     elements.date.setAttribute("min", today.toISOString().split("T")[0]); // Min date today
 
+    // Page control for what is to be shown
+    elements.filterSelector.addEventListener("change", () => filterSelectionChanged());
+
     elements.addBtn.addEventListener("click", () => addPost());
 })
 
-// Add button event handler
+// Addbutton event handler
 function addPost() {
     let newBlogPost = new blogPost(blogPosts.length + 1);
     blogPosts.push(newBlogPost);
-    console.log(blogPosts.length); // Debug
-
-    // Create an id of a blogpost based on the blogposts array length+1 and the name of the author
-    //(TODO: Figure out a better id method)
-    // and then make the actual html element to show the posting on the page. 
-    let articleId = newBlogPost.author.trim().toLowerCase().concat("_", newBlogPost.blogId);
-    let article = document.createElement("article");
-    article.setAttribute("id", articleId);
-    article.innerHTML = `
-        <h2>${newBlogPost.heading}</h2>
-        <h3><i>${newBlogPost.author}</i> - ${newBlogPost.date}</h3>
-        <p>${newBlogPost.textContent}</p>
-        <div class="image-div">
-            <img src="${newBlogPost.picturePath}">
-        </div>
-    `;
-    elements.blogList.appendChild(article);
-    console.log(article.getAttribute("id") + " is now posted!");
-
-    // Grey out the blog post if it isn't public
-    if (!newBlogPost.isPublic) {
-        article.style.filter = "grayscale(60%)"
-        article.style.color = "#4f4f4f"
-        article.style.borderColor = "#4f4f4f"
-    }
+    updateBlogList();
     clearFields();
+
+    console.log("Posts array length: " + blogPosts.length);
+    console.log("Blog post n." + newBlogPost.blogId + " is now posted!");
+}
+
+// Everytime filter selector has a "changed" event
+function filterSelectionChanged() {
+    console.log("Filter selection changed!");
+
+    
+}
+
+// Update bloglist, clear, iterate and re-render
+function updateBlogList () {
+    elements.blogList.innerHTML = "";
+    for (const post of blogPosts) {
+        elements.blogList.appendChild(post.htmlString);
+        console.log(post.postToString());
+    }
 }
 
 // After adding a new blog post, automatically reset every input field

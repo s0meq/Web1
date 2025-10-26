@@ -33,6 +33,7 @@ h1 {
     padding: 15px;
     margin: 15px 0;
     border-radius: 6px;
+    z-index: 100;
 }
 
 /* Form styling */
@@ -88,7 +89,6 @@ input[type=checkbox] {
 /* Button styling */
 button {
     display: block;
-    position: absolute;
     background-color: #333;
     color: #f0f0f0;
     border: none;
@@ -97,9 +97,6 @@ button {
     cursor: pointer;
     font-weight: bold;
     width: 150px;
-    margin: auto;
-    left: 50%;
-    transform: translate(-50%);
 }
 
 button:hover {
@@ -114,11 +111,20 @@ button:hover {
 
 #blogiLista > article {
     background-color: #1e1e1e;
-    border-left: 5px solid darkblue;
-    color: #f0f0f0;
     border-radius: 6px;
     padding: 15px;
     margin-top: 10px;
+}
+
+.public-post {
+    border-left: 5px solid darkblue;
+    color: #f0f0f0;
+}
+
+.private-post {
+    filter: grayscale(50%);
+    border-left: 5px solid #4f4f4f;
+    color: #4f4f4f;
 }
 
 #blogiLista h2 {
