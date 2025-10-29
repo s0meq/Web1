@@ -20,6 +20,7 @@ function blogPost(blogId) {
     this.picturePath = elements.picturePath.value;
     this.isPublic = elements.isPublic.checked;
     this.blogId = blogId;
+    this.blogClass = this.isPublic ? "public-post" : "private-post";
     // Since there is no deleting blog posts, array length as the base id is safe.
     this.generateHtml = () => {
         let article = document.createElement("article");
@@ -32,10 +33,9 @@ function blogPost(blogId) {
         article.setAttribute("id", this.blogId);
         article.innerHTML = articleInner;
         // Gray out the blog post if it isn't public
-        article.setAttribute("class", this.isPublic ? "public-post" : "private-post");
+        article.classList.add(this.blogClass);
         return article;
     };
-    this.htmlString = this.generateHtml();
     // Debug
     this.postToString = () => {
         return this.heading + "\n"
@@ -54,10 +54,10 @@ const blogPosts = [];
 document.addEventListener("DOMContentLoaded", () => {
     let today = new Date();
     elements.date.valueAsDate = today; // Default date
-    elements.date.setAttribute("min", today.toISOString().split("T")[0]); // Min date today
+    //elements.date.setAttribute("min", today.toISOString().split("T")[0]); // Min date today
 
     // Page control for what is to be shown
-    elements.filterSelector.addEventListener("change", () => filterSelectionChanged());
+    elements.filterSelector.addEventListener("change", () => updateBlogList(1)); // 1 means that when updating, also check if should hide posts
 
     elements.addBtn.addEventListener("click", () => addPost());
 })
@@ -66,26 +66,52 @@ document.addEventListener("DOMContentLoaded", () => {
 function addPost() {
     let newBlogPost = new blogPost(blogPosts.length + 1);
     blogPosts.push(newBlogPost);
-    updateBlogList();
+    updateBlogList(0); // Update only
     clearFields();
 
     console.log("Posts array length: " + blogPosts.length);
     console.log("Blog post n." + newBlogPost.blogId + " is now posted!");
 }
 
-// Everytime filter selector has a "changed" event
-function filterSelectionChanged() {
-    console.log("Filter selection changed!");
-
-    
-}
-
 // Update bloglist, clear, iterate and re-render
 function updateBlogList () {
     elements.blogList.innerHTML = "";
+    console.log(elements.filterSelector.value);
     for (const post of blogPosts) {
-        elements.blogList.appendChild(post.htmlString);
+        elements.blogList.appendChild(post.generateHtml());
         console.log(post.postToString());
+    }
+    filterBlogPosts();
+}
+
+// To comply with the assignment, i used the followiing DOM methods here
+// Everytime blog list is updated it is necessary to assign new hidden class
+function filterBlogPosts() {
+    let hiddenPosts;
+    let visiblePosts;
+    switch (elements.filterSelector.value) {
+        case "julkiset":
+            hiddenPosts = document.getElementsByClassName("private-post");
+            visiblePosts = document.getElementsByClassName("public-post");
+            break;
+        case "piilotetut":
+            hiddenPosts = document.querySelectorAll("article.public-post");
+            visiblePosts = document.querySelectorAll("article.private-post");
+            break;
+        case "kaikki":
+            hiddenPosts = null;
+            visiblePosts = document.getElementsByTagName("article");
+            break;
+    }
+    if (hiddenPosts !== null) {
+        for (let i = 0; i < hiddenPosts.length; i++) {
+            const selectedPost = hiddenPosts[i];
+            selectedPost.classList.add("hidden-post");
+        }
+    }
+    for (let i = 0; i < visiblePosts.length; i++) {
+        const selectedPost = visiblePosts[i];
+        selectedPost.classList.remove("hidden-post");
     }
 }
 

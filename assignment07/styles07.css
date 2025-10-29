@@ -127,6 +127,10 @@ button:hover {
     color: #4f4f4f;
 }
 
+.hidden-post {
+    display: none;
+}
+
 #blogiLista h2 {
     margin-top: 0;
 }
