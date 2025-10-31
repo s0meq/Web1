@@ -12,28 +12,35 @@ const elements = {
 }
 
 // Blog post object constructor
-function blogPost(blogId) {
-    this.heading = elements.heading.value;
-    this.author = elements.author.value;
-    this.date = elements.date.value;
-    this.textContent = elements.textContent.value;
-    this.picturePath = elements.picturePath.value;
-    this.isPublic = elements.isPublic.checked;
+function BlogPost(heading, author, date, textContent, picturePath, isPublic, blogId) {
+    this.heading = heading;
+    this.author = author;
+    this.date = date;
+    this.textContent = textContent;
+    this.picturePath = picturePath;
+    this.isPublic = isPublic;
     this.blogId = blogId;
     this.blogClass = this.isPublic ? "public-post" : "private-post";
-    // Since there is no deleting blog posts, array length as the base id is safe.
-    this.generateHtml = () => {
+    this.html = function() {
         let article = document.createElement("article");
-        let articleInner = `<h2>${this.heading}</h2>
-                            <h3><i>${this.author}</i> - ${this.date}</h3>
-                            <p>${this.textContent}</p>
-                            <div class="image-div">
-                              <img src="${this.picturePath}">
-                            </div>`;
-        article.setAttribute("id", this.blogId);
-        article.innerHTML = articleInner;
-        // Gray out the blog post if it isn't public
+        let heading = document.createElement("h2");
+        let authorDate = document.createElement("h3");
+        let textContent = document.createElement("p");
+        let image = document.createElement("img");
+        let imageDiv = document.createElement("div");
+
+        imageDiv.classList.add("blog-image-container");
+        image.classList.add("blog-image");
+
+        heading.textContent = this.heading;
+        authorDate.textContent = this.author + " - " + this.date;
+        textContent.textContent = this.textContent;
+        image.src = this.picturePath;
+        imageDiv.appendChild(image);
+        
+        article.append(heading, authorDate, textContent, imageDiv);
         article.classList.add(this.blogClass);
+
         return article;
     };
     // Debug
@@ -47,32 +54,45 @@ function blogPost(blogId) {
             + this.blogId;
     };
 }
-
 // Array to keep track of blog post objects
 const blogPosts = [];
 
 document.addEventListener("DOMContentLoaded", () => {
     let today = new Date();
     elements.date.valueAsDate = today; // Default date
-    //elements.date.setAttribute("min", today.toISOString().split("T")[0]); // Min date today
 
     // Page control for what is to be shown
-    elements.filterSelector.addEventListener("change", () => updateBlogList(1)); // 1 means that when updating, also check if should hide posts
-
+    elements.filterSelector.addEventListener("change", () => filterBlogPosts());
+    /* // 1 means that when updating, also check if should hide posts
+    elements.heading.addEventListener("focus", () => clearFields());
+    elements.heading.addEventListener("blur", () => clearFields());
+    elements.author.addEventListener("focus", () => clearFields());
+    elements.author.addEventListener("blur", () => clearFields());
+    */
     elements.addBtn.addEventListener("click", () => addPost());
 })
 
 // Addbutton event handler
 function addPost() {
-    let newBlogPost = new blogPost(blogPosts.length + 1);
+    // Create a new BlogPost by passing the values from the input fields.
+    // Also, use the correct constructor name 'BlogPost' (capital B).
+    const newBlogPost = new BlogPost(
+        elements.heading.value,
+        elements.author.value,
+        elements.date.value,
+        elements.textContent.value,
+        elements.picturePath.value,
+        elements.isPublic.checked,
+        blogPosts.length + 1
+    );
     blogPosts.push(newBlogPost);
-    updateBlogList(0); // Update only
+    elements.blogList.appendChild(newBlogPost.html());
+    console.log(newBlogPost.postToString());
+    filterBlogPosts();
     clearFields();
-
-    console.log("Posts array length: " + blogPosts.length);
-    console.log("Blog post n." + newBlogPost.blogId + " is now posted!");
 }
 
+/*
 // Update bloglist, clear, iterate and re-render
 function updateBlogList () {
     elements.blogList.innerHTML = "";
@@ -83,9 +103,11 @@ function updateBlogList () {
     }
     filterBlogPosts();
 }
+*/
 
 // To comply with the assignment, i used the followiing DOM methods here
-// Everytime blog list is updated it is necessary to assign new hidden class
+// Everytime blog list is re-rendered OR the filter selection changes, 
+// hidden/visible status has to be set again.
 function filterBlogPosts() {
     let hiddenPosts;
     let visiblePosts;

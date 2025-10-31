@@ -80,6 +80,17 @@ textarea {
     background-color: #2a2a2a;
     color: #f0f0f0;
 }
+.blog-image-container {
+    width: 100%;
+    margin: 1em 0; 
+}
+
+.blog-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
 
 /* Checkbox alignment */
 input[type=checkbox] {
@@ -141,4 +152,3 @@ button:hover {
     font-size: 13px;
     margin-top: 5px;
 }
-
