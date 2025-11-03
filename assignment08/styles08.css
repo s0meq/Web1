@@ -1,0 +1,154 @@
+/* General page layout */
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Main heading */
+h1 {
+    margin-top: 30px;
+    text-align: center;
+    color: #ffffff;
+}
+
+/* Filter selector section */
+.filter-selector-div {
+    display: flex;
+    position: sticky;
+    top: 10px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1e1e1e;
+    width: 90%;
+    max-width: 600px;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 6px;
+    z-index: 100;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #1e1e1e;
+    width: 90%;
+    max-width: 700px;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 6px;
+}
+.formbottom-div {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #3a3a3a;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #2a2a2a;
+    color: #f0f0f0;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #3a3a3a;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #2a2a2a;
+    color: #f0f0f0;
+}
+.blog-image-container {
+    width: 100%;
+    margin: 1em 0; 
+}
+
+.blog-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+/* Checkbox alignment */
+input[type=checkbox] {
+    width: 30px;
+}
+
+/* Button styling */
+button {
+    display: block;
+    background-color: #333;
+    color: #f0f0f0;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 150px;
+}
+
+button:hover {
+    background-color: #444;
+}
+
+/* Blog entry list section */
+#blogiLista {
+    width: 90%;
+    max-width: 700px;
+}
+
+#blogiLista > article {
+    background-color: #1e1e1e;
+    border-radius: 6px;
+    padding: 15px;
+    margin-top: 10px;
+}
+
+.public-post {
+    border-left: 5px solid darkblue;
+    color: #f0f0f0;
+}
+
+.private-post {
+    filter: grayscale(50%);
+    border-left: 5px solid #4f4f4f;
+    color: #4f4f4f;
+}
+
+.hidden-post {
+    display: none;
+}
+
+#blogiLista h2 {
+    margin-top: 0;
+}
+
+/* Instruction text */
+#ohje {
+    color: #f0f0f0;
+    font-size: 13px;
+    margin-top: 5px;
+}

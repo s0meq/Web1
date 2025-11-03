@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles08.css">
+  <title>Oma blogi – vaihe 1</title>
+</head>
+<body>
+  <h1>Oma blogi</h1>
+
+  <div class="filter-selector-div">
+    <span><strong>Näytä merkinnät:</strong></span>
+    <select id="suodatin">
+      <option value="kaikki">Kaikki</option>
+      <option value="julkiset">Vain julkiset</option>
+      <option value="piilotetut">Vain piilotetut</option>
+    </select>
+  </div>
+
+  <form>
+    <label for="otsikko">Otsikko:</label>
+    <input type="text" id="otsikko">
+
+    <label for="kirjoittaja">Kirjoittaja:</label>
+    <input type="text" id="kirjoittaja">
+
+    <label for="paiva">Julkaisupäivä:</label>
+    <input type="date" id="paiva" min="">
+
+    <label for="sisalto">Sisältö:</label>
+    <textarea id="sisalto"></textarea>
+
+    <label for="kuva">Kuvan osoite (URL):</label>
+    <input type="url" id="kuva" placeholder="https://...jpg">
+
+    <div class="formbottom-div">
+      <label>
+        Näytä julkisena
+        <input type="checkbox" id="julkinen">
+      </label>
+      <button type="button" id="lisaaBtn">Lisää merkintä</button>
+    </div>
+
+    <div id="ohje"></div>
+  </form>
+
+  <section id="blogiLista"></section>
+
+  <script src="script.js"></script>
+</body>
+</html>
