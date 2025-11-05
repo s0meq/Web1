@@ -23,17 +23,17 @@
   </div>
 
   <form>
-    <label for="otsikko">Otsikko:</label>
-    <input type="text" id="otsikko">
+    <label for="otsikko">Otsikko: *</label>
+    <input type="text" id="otsikko" required>
 
-    <label for="kirjoittaja">Kirjoittaja:</label>
-    <input type="text" id="kirjoittaja">
+    <label for="kirjoittaja">Kirjoittaja: *</label>
+    <input type="text" id="kirjoittaja" required>
 
     <label for="paiva">Julkaisupäivä:</label>
     <input type="date" id="paiva" min="">
 
-    <label for="sisalto">Sisältö:</label>
-    <textarea id="sisalto"></textarea>
+    <label for="sisalto">Sisältö: *</label>
+    <textarea id="sisalto" required></textarea>
 
     <label for="kuva">Kuvan osoite (URL):</label>
     <input type="url" id="kuva" placeholder="https://...jpg">
@@ -43,11 +43,14 @@
         Näytä julkisena
         <input type="checkbox" id="julkinen">
       </label>
-      <button type="button" id="lisaaBtn">Lisää merkintä</button>
+      <button type="submit" id="lisaaBtn">Lisää merkintä</button>
+      <span class="required-hint">* pakollinen</span>
     </div>
 
     <div id="ohje"></div>
   </form>
+
+  <section id="blogTableContainer"></section>
 
   <section id="blogiLista"></section>
 
