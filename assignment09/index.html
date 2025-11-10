@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <title>Pokémon-taulukko jQueryllä</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #f5f5f5; }
+    button { background: #007bff; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; }
+    button:hover { background: #0056b3; }
+    table { border-collapse: collapse; margin-top: 20px; background: white; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 8px; }
+    th { background: #eee; text-align: left; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <h1>Pokémon-lista</h1>
+  <p>Tässä tehtävässä haetaan julkisesta REST API:sta JSON-dataa ja näytetään se taulukkona.</p>
+
+  <button id="load-data">Lataa Pokémonit</button>
+
+  <div id="result"></div>
+
+  <script>
+    // 🔹 Tehtävä: Kirjoita tähän jQuery-koodi, joka tekee seuraavat asiat:
+
+    // 1️⃣ Kun "Lataa Pokémonit" -painiketta painetaan:
+    //    - Näytä käyttäjälle teksti "Ladataan dataa..."
+    //    - Tee AJAX GET -pyyntö osoitteeseen:
+    //         https://pokeapi.co/api/v2/pokemon?limit=10
+    //
+    //    API palauttaa JSON-olion, jonka rakenne on seuraava:
+    //    {
+    //       "count": 1302,
+    //       "results": [
+    //          { "name": "bulbasaur", "url": "https://pokeapi.co/api/v2/pokemon/1/" },
+    //          { "name": "ivysaur",   "url": "https://pokeapi.co/api/v2/pokemon/2/" },
+    //          ...
+    //       ]
+    //    }
+    //
+    //    -> Tästä datasta meitä kiinnostaa siis vain "results"-kenttä:
+    //       data.results
+    //
+    //    - Tallenna results-taulukko omaan muuttujaan (esim. pokemonData)
+    //    - Kutsu funktiota, joka näyttää tuloksen taulukkona
+
+    // 2️⃣ Luo funktio (esim. tulostaTaulukko), joka rakentaa taulukon:
+    //    Sarakkeet: "Nimi" ja "API-linkki"
+    //    (API:n palauttamassa datassa on kentät "name" ja "url")
+
+    // 3️⃣ Lisää taulukon otsikkoon "Nimi" klikkaustoiminto:
+    //    Kun käyttäjä painaa otsikkoa, taulukon rivit
+    //    lajitellaan nimen perusteella aakkosjärjestykseen.
+    //
+    //    Voit käyttää metodia:
+    //        array.sort(function(a, b) {
+    //          return a.name.localeCompare(b.name);
+    //        });
+    //
+    //    Muista päivittää taulukko lajittelun jälkeen.
+
+    // 💡 Vinkkejä:
+    // - Käytä $('#load-data').on('click', ...) painikkeen käsittelyyn
+    // - Käytä $('#result').html(...) tulostamiseen
+    // - AJAX-pyynnön voi tehdä $.get()-funktiolla
+    // - Datan tulostamisessa voit hyödyntää forEach- tai map-funktiota
+  </script>
+
+</body>
+</html>
