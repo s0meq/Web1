@@ -23,6 +23,81 @@
   <div id="result"></div>
 
   <script>
+
+    $(document).ready(function() {
+
+      $("#load-data").on("click", function() {
+        $("#result").empty();
+        let pokemonData = null;
+
+        $.get("https://pokeapi.co/api/v2/pokemon?limit=10", function(data) {
+          pokemonData = data.results;
+ 
+          if (pokemonData != null) {
+            
+            $("#result").append(printTable(pokemonData));
+            updateList(pokemonData);
+
+          } else {
+
+            console.log(`ERROR: pokemonData: ${pokemonData}`);
+            $("#result").text("An error occured while fetching data...");
+
+          }
+        }); // .get
+      }); // on click
+    }); // Document ready
+
+    function printTable(pokemonData) {
+
+      let table = document.createElement("table");
+      let headerRow = document.createElement("tr");
+      let headerName = document.createElement("th");
+      let headerApiLink = document.createElement("th");
+      table.classList.add("pokemonTable");
+      let ascending = true;
+      headerName.addEventListener("click", () => {
+        sortPokemonsByName(pokemonData, ascending);
+        ascending = !ascending;
+      });
+      headerName.textContent = "Nimi ⬍";
+      headerApiLink.textContent = "API-linkki";
+      headerRow.append(headerName, headerApiLink);
+      table.appendChild(headerRow);
+      return table;
+    }
+
+    // Sort by name when "name" header cell is clicked
+    function sortPokemonsByName(pokemonData, ascending) {
+      let sortedPokemonData = pokemonData.sort(function(a, b) {
+        return a.name.localeCompare(b.name);
+      });
+      if (!ascending) sortedPokemonData.reverse();
+      updateList(sortedPokemonData);
+    }
+
+
+    function updateList(pokemonData) {
+      $(".data-row").remove();
+      pokemonData.forEach(element => {
+        $(".pokemonTable").append(newRow(element.name, element.url));
+      });
+    }
+
+    // Returns a new row for table to show pocemons
+    function newRow(pokemonName, pokemonLink) {
+      let row = document.createElement("tr");
+      row.classList.add("data-row");
+      let nameData = document.createElement("td");
+      let apiLinkData = document.createElement("td");
+      let apiLink = document.createElement("a");
+      apiLink.setAttribute("href", pokemonLink);
+      apiLinkData.appendChild(apiLink);
+      nameData.textContent = pokemonName;
+      apiLink.textContent = pokemonLink;
+      row.append(nameData, apiLinkData);
+      return row;
+    }
     // 🔹 Tehtävä: Kirjoita tähän jQuery-koodi, joka tekee seuraavat asiat:
 
     // 1️⃣ Kun "Lataa Pokémonit" -painiketta painetaan:
