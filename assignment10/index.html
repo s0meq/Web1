@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<title>CRUD Dummyjson</title>
+<style>
+  table { border-collapse: collapse; margin-top: 1em; }
+  td, th { border: 1px solid #ccc; padding: .4em .8em; }
+  button.small { font-size: 0.8em; margin-left: .4em; }
+  dialog { padding: 1em; border: 1px solid #666; }
+  label { display: block; margin-top: .5em; }
+</style>
+</head>
+<body>
+
+<button id="load">Lataa tuotteet</button>
+<button id="add">Lisää tuote</button>
+
+<p id="status"></p>
+<div id="output"></div>
+<!-- Näytä täällä palvelimen vastaus POST, PUT, ja DELETE-toiminnoille -->
+<p><strong>Palvelimen vastaus:</strong></p>
+<div id="serverResponse"></div>
+
+<!-- Yhteinen dialogi lisäykseen + editointiin -->
+<dialog id="productDialog">
+  <form id="productForm">
+    <label>Tuotteen nimi:
+      <input type="text" id="titleInput" required>
+    </label>
+    <label>Hinta:
+      <input type="number" id="priceInput" required>
+    </label>
+
+    <button type="submit">Tallenna</button>
+    <button type="button" onclick="productDialog.close()">Peruuta</button>
+  </form>
+</dialog>
+
+<script>
+// ---- Perusmuuttujat ----
+const status = document.getElementById("status");
+const output = document.getElementById("output");
+const load = document.getElementById("load");
+const add = document.getElementById("add");
+const productDialog = document.getElementById("productDialog");
+const productForm = document.getElementById("productForm");
+const titleInput = document.getElementById("titleInput");
+const priceInput = document.getElementById("priceInput");
+const serverResponse = document.getElementById("serverResponse");
+
+
+// --- Tila lomaketta varten (lisäys / muokkaus) ---
+let formMode = "add"; // add tai edit
+let editingProductId = null;
+
+// ---- GET: Lataa tuotteet ----
+load.addEventListener('click', () => {
+  setStatus('Haetaan tuotteita...');
+  fetch('https://dummyjson.com/products?limit=10')
+    .then(r => checkStatus(r))
+    .then(r => r.json())
+    .then(data => {
+      renderTable(data.products);
+      setStatus('Tuotteet ladattu');
+    })
+    .catch(handleError);
+});
+
+// ---- Lisää-nappi avaa lomakkeen tyhjänä ----
+add.addEventListener('click', () => {
+  formMode = "add";
+  editingProductId = null;
+  productForm.reset();
+  productDialog.showModal();
+});
+
+// ---- Muokkaus avataan täytetyllä lomakkeella ----
+function openEdit(product) {
+  formMode = "edit";
+  editingProductId = product.id;
+
+  titleInput.value = product.title;
+  priceInput.value = product.price;
+
+  productDialog.showModal();
+}
+
+// ---- DELETE ----
+function deleteProduct(id) {
+  if (!confirm("Poistetaanko tämä tuote?")) return;
+  setStatus("Poistetaan tuote...");
+
+// KIRJOITA TÄNNE DELETE-pyyntö. Katso URIn muoto: https://dummyjson.com/docs/products
+// fetchin muotoilun ja jatkokäsittelyn voit kopioida tänne ja muokata POST-käsittelyn
+// esimerkistä fetch..then..then..then..catch
+}
+
+
+// ---- Lomakkeen TALLENNA (POST tai PUT) ----
+productForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const title = titleInput.value;
+  const price = Number(priceInput.value);
+  const data = { title, price }; // serverillä tuotteet ovat JSON-objekteja
+
+  let url, method;
+// tuotteen lisäys
+  if (formMode === "add") {
+    url = 'https://dummyjson.com/products/add';
+    method = 'POST';
+    setStatus("Lisätään tuote...");
+  }
+  // LISÄÄ TÄNNE TUOTTEEN PÄIVITYS SERVERILLE
+  else {
+
+  }
+
+  fetch(url, {
+    method,
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(data)
+  })
+  .then(r => checkStatus(r))
+  .then(r => r.json())
+.then(data => {
+  serverResponse.innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+  setStatus(formMode === "add" ? "Lisäys onnistui" : "Päivitys onnistui");
+
+  productDialog.close();
+  load.click(); // päivitä lista
+})
+  .catch(handleError);
+});
+
+// ---- Muokattu: lisätään taulukon riveille muokkaus ja poisto ----
+// LISÄÄ MUOKKAA- JA POISTA_PAINIKKEILLE KUTSU OpenEdit() JA deleteProduct()-
+// FUNKTIOILLE VASTAAVASTI. VÄLITÄ TARVITTAVAT PARAMETRIT
+function renderTable(products) {
+  const rows = products.map(p =>
+   `
+   <tr>
+     <td>${p.title}</td>
+     <td>${p.price}</td>
+     <td>
+       <button class="small" onclick=''>Muokkaa</button>
+       <button class="small" onclick=''>Poista</button>
+     </td>
+   </tr>
+   `
+  ).join('');
+  
+  output.innerHTML = `
+   <table>
+     <thead><tr><th>Nimi</th><th>Hinta</th><th>Toiminnot</th></tr></thead>
+     <tbody>${rows}</tbody>
+   </table>
+  `;
+}
+
+// ---- AJAX-pyynnön statusviesti  ----
+function setStatus(msg) {
+  status.textContent = msg;
+}
+
+// jos vastaus on 200 OK, niin jatketaan promisen then-ketjua
+// muuten nostetaan virhelippu, jolloin mennään .catch-haaraan
+function checkStatus(response) {
+  if(!response.ok) throw new Error('HTTP error ' + response.status);
+  return response; // tärkeä, jotta promisen ketju jatkuu
+}
+// näytä serverin virheilmoitus
+function handleError(err) {
+  console.error(err);
+  setStatus('Virhe: ' + err.message);
+}
+</script>
+
+</body>
+</html>
