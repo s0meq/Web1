@@ -90,10 +90,16 @@ function openEdit(product) {
 function deleteProduct(id) {
   if (!confirm("Poistetaanko tämä tuote?")) return;
   setStatus("Poistetaan tuote...");
-
-// KIRJOITA TÄNNE DELETE-pyyntö. Katso URIn muoto: https://dummyjson.com/docs/products
-// fetchin muotoilun ja jatkokäsittelyn voit kopioida tänne ja muokata POST-käsittelyn
-// esimerkistä fetch..then..then..then..catch
+  let url = `https://dummyjson.com/products/${id}`;
+  fetch(url, {
+    method: 'DELETE',
+  })
+  .then(r => checkStatus(r))
+  .then(r => r.json())
+  .then(data => {
+    serverResponse.innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+  })
+  .catch(handleError);
 }
 
 
@@ -106,15 +112,31 @@ productForm.addEventListener("submit", (event) => {
   const data = { title, price }; // serverillä tuotteet ovat JSON-objekteja
 
   let url, method;
+
 // tuotteen lisäys
   if (formMode === "add") {
     url = 'https://dummyjson.com/products/add';
     method = 'POST';
     setStatus("Lisätään tuote...");
+    fetch(url, {
+      method: method,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    .then(r => checkStatus(r))
+    .then(r => r.json());
   }
   // LISÄÄ TÄNNE TUOTTEEN PÄIVITYS SERVERILLE
   else {
-
+    url = 'https://dummyjson.com/products/';
+    method = 'PUT';
+    fetch('https://dummyjson.com/products/1', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    .then(r => checkStatus(r))
+    .then(r => r.json());
   }
 
   fetch(url, {
@@ -124,13 +146,13 @@ productForm.addEventListener("submit", (event) => {
   })
   .then(r => checkStatus(r))
   .then(r => r.json())
-.then(data => {
-  serverResponse.innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
-  setStatus(formMode === "add" ? "Lisäys onnistui" : "Päivitys onnistui");
+  .then(data => {
+    serverResponse.innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+    setStatus(formMode === "add" ? "Lisäys onnistui" : "Päivitys onnistui");
 
-  productDialog.close();
-  load.click(); // päivitä lista
-})
+    productDialog.close();
+    load.click(); // päivitä lista
+  })
   .catch(handleError);
 });
 
@@ -144,8 +166,8 @@ function renderTable(products) {
      <td>${p.title}</td>
      <td>${p.price}</td>
      <td>
-       <button class="small" onclick=''>Muokkaa</button>
-       <button class="small" onclick=''>Poista</button>
+       <button class="small" onclick='openEdit(${p})'>Muokkaa</button>
+       <button class="small" onclick='deleteProduct(${p.id})'>Poista</button>
      </td>
    </tr>
    `
