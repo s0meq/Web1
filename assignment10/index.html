@@ -121,7 +121,7 @@ productForm.addEventListener("submit", (event) => {
   }
   // LISÄÄ TÄNNE TUOTTEEN PÄIVITYS SERVERILLE
   else {
-    url = 'https://dummyjson.com/products/';
+    url = `https://dummyjson.com/products/${editingProductId}`;
     method = 'PUT';
     setStatus("Päivitetään...");
   }
@@ -146,6 +146,7 @@ productForm.addEventListener("submit", (event) => {
 // ---- Muokattu: lisätään taulukon riveille muokkaus ja poisto ----
 // LISÄÄ MUOKKAA- JA POISTA_PAINIKKEILLE KUTSU OpenEdit() JA deleteProduct()-
 // FUNKTIOILLE VASTAAVASTI. VÄLITÄ TARVITTAVAT PARAMETRIT
+/*
 function renderTable(products) {
   const rows = products.map(p =>
    `
@@ -167,6 +168,53 @@ function renderTable(products) {
    </table>
   `;
 }
+  */
+
+  // Täst uus render funktio koska en saanu tolla toisella toimii p parametrii
+function renderTable(products) {
+
+  output.innerHTML = "";
+  const table = document.createElement("table");
+  const thead = document.createElement("thead");
+  const headerRow = document.createElement("tr");
+  ["Nimi", "Hinta", "Toiminnot"].forEach(text => {
+    const th = document.createElement("th");
+    th.textContent = text;
+    headerRow.appendChild(th);
+  });
+
+  thead.appendChild(headerRow);
+  table.appendChild(thead);
+
+  const tbody = document.createElement("tbody");
+  products.forEach(p => {
+    const tr = document.createElement("tr");
+    const nameTd = document.createElement("td");
+    nameTd.textContent = p.title;
+    tr.appendChild(nameTd);
+    const priceTd = document.createElement("td");
+    priceTd.textContent = p.price;
+    tr.appendChild(priceTd);
+    const actionTd = document.createElement("td");
+    const editBtn = document.createElement("button");
+    editBtn.className = "small";
+    editBtn.textContent = "Muokkaa";
+    editBtn.onclick = () => openEdit(p);
+    actionTd.appendChild(editBtn);
+    const delBtn = document.createElement("button");
+    delBtn.className = "small";
+    delBtn.textContent = "Poista";
+    delBtn.onclick = () => deleteProduct(p.id);
+    actionTd.appendChild(delBtn);
+    tr.appendChild(actionTd);
+    tbody.appendChild(tr);
+  });
+
+  table.appendChild(tbody);
+  output.appendChild(table);
+}
+
+
 
 // ---- AJAX-pyynnön statusviesti  ----
 function setStatus(msg) {
