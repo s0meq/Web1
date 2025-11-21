@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <title>DummyJSON Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+        #users {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        .user {
+            padding: 5px;
+            border-bottom: 1px solid #eee;
+        }
+        #loginForm {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        #message {
+            margin-top: 15px;
+            padding: 10px;
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+
+<h2>DummyJSON – GET ja POST demo</h2>
+
+<button id="loadUsersBtn">Lataa käyttäjät</button>
+<div id="users"></div>
+
+<form id="loginForm">
+    <h3>Kirjaudu sisään</h3>
+    <label>Käyttäjänimi:
+        <input type="text" id="username" required>
+    </label><br><br>
+    <label>Salasana:
+        <input type="password" id="password" required>
+    </label><br><br>
+    <button type="submit">Kirjaudu</button>
+</form>
+
+<div id="message"></div>
+
+<script>
+    const usersDiv = document.getElementById("users");
+    const messageDiv = document.getElementById("message");
+    const loadUsersBtn = document.getElementById("loadUsersBtn");
+    const loginForm = document.getElementById("loginForm");
+
+    // GET: hae käyttäjät
+    loadUsersBtn.addEventListener("click", async () => {
+        const res = await fetch("https://dummyjson.com/users");
+        const data = await res.json();
+
+        usersDiv.innerHTML = data.users
+            .map(u => `<div class="user">${u.firstName} ${u.lastName} (${u.email})</div>`)
+            .join("");
+    });
+
+    // POST: lähetä kirjautumistiedot
+    loginForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const user = {
+            username: document.getElementById("username").value,
+            password: document.getElementById("password").value
+        };
+
+        const res = await fetch("https://dummyjson.com/auth/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(user)
+        });
+
+        const data = await res.json();
+
+        if (data.token) {
+            messageDiv.innerText = "Kirjautuminen onnistui! Token: " + data.token;
+        } else {
+            messageDiv.innerText = "Virhe: " + data.message;
+        }
+    });
+</script>
+
+</body>
+</html>
