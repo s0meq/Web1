@@ -323,14 +323,62 @@ function attachProductEvents() {
     input.addEventListener("change",()=>updateProduct(Number(input.dataset.id),"price",Number(input.value)));
   });
 
-  } // attachProductEvents
+} // attachProductEvents
 // hakufiltteri ja lajittelu
 document.getElementById("search").addEventListener("input", filterProducts); // kirjainta syötettäessä
 document.getElementById("categoryFilter").addEventListener("change", filterProducts); // kirjainta syötettäessä
 document.getElementById("sort").addEventListener("change",sortProducts);          // Lajittelua valitaan
 
-  // tehdään heti alkuun tuotehaku
-  fetchProducts();
+// tehdään heti alkuun tuotehaku
+fetchProducts();
+
+function addToCart(productId) {
+  const productToAdd = products.find(p => p.id === productId);
+  cart.push(productToAdd);
+  renderCart();
+  console.log(cart);
+}
+
+// Display cart items and the sum of them
+function renderCart() {
+  const totalStr = "Yhteensä: ";
+  const cartList = document.getElementById("cartItems");
+  let totalAmount = 0;
+  cartList.innerHTML = "";
+  cart.map(c => {
+    const itemCountInCart = cart.filter(filterc => filterc.id === c.id).length;
+    const item = document.createElement("li");
+    const itemName = document.createElement("p");
+    item.setAttribute("id", c.id);
+    itemName.textContent = c.title.concat(" - ", c.price, "€ x ", itemCountInCart);
+    item.appendChild(itemName);
+    
+    if (itemCountInCart > 1 && !document.getElementById(c.id)) {
+      cartList.appendChild(item);
+    } else if (itemCountInCart > 1 && document.getElementById(c.id)) {
+      totalAmount += Number(c.price);
+      return;
+    } else {
+      cartList.appendChild(item);
+    }
+
+    totalAmount += Number(c.price);
+  });
+  document.getElementById("cartTotal").textContent = totalStr.concat(totalAmount, "€");
+} // renderCart
+
+function saveCart() {
+  // TODO: save cart to local storage
+} // saveCart
+
+function loadCart() {
+  // TODO: load cart from local storage
+} // loadCart
+
+function deleteProduct(productId) {
+  // TODO: delete product from the listing
+} // deleteProduct 
+
 </script>
 
 
