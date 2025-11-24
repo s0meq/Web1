@@ -228,6 +228,7 @@ async function fetchProducts() {
     filteredProducts = [...products]; // aluksi kopioidaan kaikki tuotteet
     renderProducts(); // piirretään taulukko
     fetchCategories(); // haetaan tuotekategoriat
+    loadCart(); // lataa localStorageen tallennettu ostoskori
   } catch(e) {
     showAlert("Virhe tuotteiden haussa", "error");
   } // catch
@@ -336,6 +337,7 @@ function addToCart(productId) {
   const productToAdd = products.find(p => p.id === productId);
   cart.push(productToAdd);
   renderCart();
+  saveCart();
   console.log(cart);
 }
 
@@ -368,11 +370,13 @@ function renderCart() {
 } // renderCart
 
 function saveCart() {
-  // TODO: save cart to local storage
+  const cartToSave = localStorage.setItem("savedCart", JSON.stringify(cart));
 } // saveCart
 
 function loadCart() {
-  // TODO: load cart from local storage
+  const loadedCart = localStorage.getItem("savedCart");
+  cart = loadedCart ? JSON.parse(loadedCart) : [];
+  renderCart();
 } // loadCart
 
 function deleteProduct(productId) {
