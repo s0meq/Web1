@@ -380,7 +380,15 @@ function loadCart() {
 } // loadCart
 
 function deleteProduct(productId) {
-  // TODO: delete product from the listing
+  // Dummy delete request bc it is a delete function afterall
+  fetch(`https://dummyjson.com/products/${productId}`, {
+    method: 'DELETE'
+  })
+  .then(res => res.json())
+  .then();
+
+  const tbody = document.getElementById("productTable");
+  const tbodyParent = tbody.querySelector(`#${productId}`).parentElement;
 } // deleteProduct 
 
 </script>
