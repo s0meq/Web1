@@ -25,31 +25,7 @@
 <div>
   <input type="text" id="search" placeholder="Hae nimellä...">
   <select id="categoryFilter">
-    <option value="" selected="selected">Kaikki kategoriat</option>
-    <option value="beauty">beauty</option>
-    <option value="fragrances">fragrances</option>
-    <option value="furniture">furniture</option>
-    <option value="groceries">groceries</option>
-    <option value="home-decoration">home-decoration</option>
-    <option value="kitchen-accessories">kitchen-accessories</option>
-    <option value="laptops">laptops</option>
-    <option value="mens-shirts">mens-shirts</option>
-    <option value="mens-shoes">mens-shoes</option>
-    <option value="mens-watches">mens-watches</option>
-    <option value="mobile-accessories">mobile-accessories</option>
-    <option value="motorcycle">motorcycle</option>
-    <option value="skin-care">skin-care</option>
-    <option value="smartphones">smartphones</option>
-    <option value="sports-accessories">sports-accessories</option>
-    <option value="sunglasses">sunglasses</option>
-    <option value="tablets">tablets</option>
-    <option value="tops">tops</option>
-    <option value="vehicle">vehicle</option>
-    <option value="womens-bags">womens-bags</option>
-    <option value="womens-dresses">womens-dresses</option>
-    <option value="womens-jewellery">womens-jewellery</option>
-    <option value="womens-shoes">womens-shoes</option>
-    <option value="womens-watches">womens-watches</option>
+    <option value="">Kaikki kategoriat</option>
   </select>
   <select id="sort">
     <option value="" selected="selected">Lajittelu</option>
@@ -59,7 +35,6 @@
     <option value="price-desc">Hinta laskevasti</option>
   </select>
 </div>
-
 <!-- Tuotetaulukko -->
 <table>
   <thead>
@@ -71,77 +46,7 @@
       <th>Toiminnot</th>
     </tr>
   </thead>
-  <tbody id="productTable"><tr> 
-    <td>1</td>
-    <td><input value="Essence Mascara Lash Princess" data-id="1" class="editName"></td>
-    <td>beauty</td>
-    <td><input type="number" value="9.99" data-id="1 class=" editprice"=""></td>
-    <td><button data-id="1" class="deleteBtn">Poista</button></td>
-    <td><button data-id="1" class="addCartBtn">Lisää koriin</button></td>
-    </tr><tr> 
-    <td>2</td>
-    <td><input value="Eyeshadow Palette with Mirror" data-id="2" class="editName"></td>
-    <td>beauty</td>
-    <td><input type="number" value="19.99" data-id="2 class=" editprice"=""></td>
-    <td><button data-id="2" class="deleteBtn">Poista</button></td>
-    <td><button data-id="2" class="addCartBtn">Lisää koriin</button></td>
-    </tr><tr> 
-    <td>3</td>
-    <td><input value="Powder Canister" data-id="3" class="editName"></td>
-    <td>beauty</td>
-    <td><input type="number" value="14.99" data-id="3 class=" editprice"=""></td>
-    <td><button data-id="3" class="deleteBtn">Poista</button></td>
-    <td><button data-id="3" class="addCartBtn">Lisää koriin</button></td>
-    </tr><tr> 
-    <td>4</td>
-    <td><input value="Red Lipstick" data-id="4" class="editName"></td>
-    <td>beauty</td>
-    <td><input type="number" value="12.99" data-id="4 class=" editprice"=""></td>
-    <td><button data-id="4" class="deleteBtn">Poista</button></td>
-    <td><button data-id="4" class="addCartBtn">Lisää koriin</button></td>
-    </tr><tr> 
-    <td>5</td>
-    <td><input value="Red Nail Polish" data-id="5" class="editName"></td>
-    <td>beauty</td>
-    <td><input type="number" value="8.99" data-id="5 class=" editprice"=""></td>
-    <td><button data-id="5" class="deleteBtn">Poista</button></td>
-    <td><button data-id="5" class="addCartBtn">Lisää koriin</button></td>
-    </tr><tr> 
-    <td>6</td>
-    <td><input value="Calvin Klein CK One" data-id="6" class="editName"></td>
-    <td>fragrances</td>
-    <td><input type="number" value="49.99" data-id="6 class=" editprice"=""></td>
-    <td><button data-id="6" class="deleteBtn">Poista</button></td>
-    <td><button data-id="6" class="addCartBtn">Lisää koriin</button></td>
-    </tr><tr> 
-    <td>7</td>
-    <td><input value="Chanel Coco Noir Eau De" data-id="7" class="editName"></td>
-    <td>fragrances</td>
-    <td><input type="number" value="129.99" data-id="7 class=" editprice"=""></td>
-    <td><button data-id="7" class="deleteBtn">Poista</button></td>
-    <td><button data-id="7" class="addCartBtn">Lisää koriin</button></td>
-    </tr><tr> 
-    <td>8</td>
-    <td><input value="Dior J'adore" data-id="8" class="editName"></td>
-    <td>fragrances</td>
-    <td><input type="number" value="89.99" data-id="8 class=" editprice"=""></td>
-    <td><button data-id="8" class="deleteBtn">Poista</button></td>
-    <td><button data-id="8" class="addCartBtn">Lisää koriin</button></td>
-    </tr><tr> 
-    <td>9</td>
-    <td><input value="Dolce Shine Eau de" data-id="9" class="editName"></td>
-    <td>fragrances</td>
-    <td><input type="number" value="69.99" data-id="9 class=" editprice"=""></td>
-    <td><button data-id="9" class="deleteBtn">Poista</button></td>
-    <td><button data-id="9" class="addCartBtn">Lisää koriin</button></td>
-    </tr><tr> 
-    <td>10</td>
-    <td><input value="Gucci Bloom Eau de" data-id="10" class="editName"></td>
-    <td>fragrances</td>
-    <td><input type="number" value="79.99" data-id="10 class=" editprice"=""></td>
-    <td><button data-id="10" class="deleteBtn">Poista</button></td>
-    <td><button data-id="10" class="addCartBtn">Lisää koriin</button></td>
-    </tr></tbody>
+  <tbody id="productTable"></tbody>
 </table>
 
 <div class="pagination">
@@ -385,10 +290,9 @@ function deleteProduct(productId) {
     method: 'DELETE'
   })
   .then(res => res.json())
-  .then();
-
-  const tbody = document.getElementById("productTable");
-  const tbodyParent = tbody.querySelector(`#${productId}`).parentElement;
+  .then(products = products.filter(p => p.id !== productId))
+  .then(filterProducts());
+  console.log(`Product with ID ${productId}`);
 } // deleteProduct 
 
 </script>
