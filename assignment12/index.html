@@ -15,6 +15,7 @@
     .success { background-color: #d4edda; color: #155724; }
     .error { background-color: #f8d7da; color: #721c24; }
     .cart { border:1px solid #ddd; padding:10px; margin-top:10px;}
+    .customers { border:1px solid #ddd; padding:10px; margin-top:10px;}
   </style>
 </head>
 <body>
@@ -68,6 +69,11 @@
       <label for="postalCode">95560, 98570</label>
   <input type="text" id="postCode" placeholder="Postinumero">
   <input type="text" id="city" placeholder="Toimipaikka" readonly="readonly">
+</div>
+
+<div class="customers">
+  <h2>Rekisteröidyt asiakkaat</h2>
+  <ul id="customerItems"></ul>
 </div>
 
 <div id="alert" class="alert"></div>
@@ -260,8 +266,9 @@ document.getElementById("search").addEventListener("input", filterProducts); // 
 document.getElementById("categoryFilter").addEventListener("change", filterProducts); // kirjainta syötettäessä
 document.getElementById("sort").addEventListener("change",sortProducts);          // Lajittelua valitaan
 
-// asiakastiedot (postinumero)
-document.getElementById("postCode").addEventListener("blur", (event) => {
+// asiakastiedot
+document.getElementById("city").addEventListener("blur", addCustomer); // kaupunkisyötteestä lähdettäessä
+document.getElementById("postCode").addEventListener("blur", () => {
   const givenPostalCode = document.getElementById("postCode").value;
   const cityInput = document.getElementById("city");
   const xmlParser = new DOMParser();
@@ -280,15 +287,27 @@ document.getElementById("postCode").addEventListener("blur", (event) => {
   cityInput.value = "";
 });
 
-// tehdään heti alkuun tuotehaku
-fetchProducts();
+function addCustomer() {
+  const nameInput = document.getElementById("name").value;
+  const emailInput = document.getElementById("email").value;
+  const postalInput = document.getElementById("postCode").value;
+  const cityInput = document.getElementById("city").value;
+  const customerItems = document.getElementById("customerItems");
+
+  const customerItem = document.createElement("li");
+  const customerInfo = document.createElement("p");
+
+  customerInfo.textContent = nameInput.concat(" - ", emailInput, " - ", postalInput, " ", cityInput);
+  customerItem.appendChild(customerInfo);
+  customerItems.appendChild(customerItem);
+
+} // renderCustomers
 
 function addToCart(productId) {
   const productToAdd = products.find(p => p.id === productId);
   cart.push(productToAdd);
   renderCart();
   saveCart();
-  console.log(cart);
 }
 
 // Display cart items and the sum of them
@@ -339,6 +358,9 @@ function deleteProduct(productId) {
   .then(filterProducts());
   console.log(`Product with ID ${productId}`);
 } // deleteProduct 
+
+// tehdään heti alkuun tuotehaku
+fetchProducts();
 
 </script>
 
