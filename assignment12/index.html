@@ -151,7 +151,7 @@ function renderProducts() {
     <td>${p.id}</td>
     <td><input value="${p.title}" data-id="${p.id}" class="editName"></td>
     <td>${p.category}</td>
-    <td><input type="number" value="${p.price}" data-id="${p.id} class="editPrice"></td>
+    <td><input type="number" value="${p.price}" data-id="${p.id}" class="editPrice"></td>
     <td><button data-id="${p.id}" class="deleteBtn">Poista</button></td>
     <td><button data-id="${p.id}" class="addCartBtn">Lisää koriin</button></td>
     `;
@@ -226,6 +226,10 @@ const sampleXML = `
     <nimi>Aappola</nimi>
     <postinumero>71810</postinumero>
   </toimipaikka>
+  <toimipaikka>
+    <nimi>Kuopio</nimi>
+    <postinumero>70500</postinumero>
+  </toimipaikka>
 </postitoimipaikat>
 `;
 
@@ -255,6 +259,26 @@ function attachProductEvents() {
 document.getElementById("search").addEventListener("input", filterProducts); // kirjainta syötettäessä
 document.getElementById("categoryFilter").addEventListener("change", filterProducts); // kirjainta syötettäessä
 document.getElementById("sort").addEventListener("change",sortProducts);          // Lajittelua valitaan
+
+// asiakastiedot (postinumero)
+document.getElementById("postCode").addEventListener("blur", (event) => {
+  const givenPostalCode = document.getElementById("postCode").value;
+  const cityInput = document.getElementById("city");
+  const xmlParser = new DOMParser();
+  const xmlParsed = xmlParser.parseFromString(sampleXML ,"text/xml");
+  const toimiPaikat = xmlParsed.getElementsByTagName("toimipaikka");
+
+  for (let i = 0; i < toimiPaikat.length; i++) {
+    const name = toimiPaikat[i].getElementsByTagName("nimi")[0].textContent;
+    const code = toimiPaikat[i].getElementsByTagName("postinumero")[0].textContent;
+    if (code === givenPostalCode) {
+      cityInput.value = name;
+      return;
+    }
+  }
+  showAlert("Postitoimipaikkaa ei löydy", "error");
+  cityInput.value = "";
+});
 
 // tehdään heti alkuun tuotehaku
 fetchProducts();
@@ -319,4 +343,5 @@ function deleteProduct(productId) {
 </script>
 
 
-</body></html>
+</body>
+</html>
